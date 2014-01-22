@@ -8,4 +8,13 @@ package tornipuolustus.ruudut;
 
 public class Kuljettava extends Ruutu {
 
+    public Kuljettava(int x, int y) {
+        super(x,y);
+    }
+    
+    @Override
+    public void piirra() {
+        System.out.print(">");
+    }
+
 }

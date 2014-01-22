@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package tornipuolustus.ruudut;
 
@@ -10,7 +6,15 @@ public class Rakennettava extends Ruutu {
 
     private boolean varattu;
     
-    public Rakennettava() {
-        
+    public Rakennettava(int x, int y) {
+        super(x,y);
+    }
+
+    @Override
+    public void piirra() {
+        if (varattu) {
+            System.out.print("T");
+        }
+        System.out.print("O");
     }
 }
