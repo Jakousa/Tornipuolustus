@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.043" errors="0" skipped="0" tests="11" name="tornipuolustus.tornipuolustus.TornipuolustusTest">
+<testsuite failures="0" time="0.041" errors="0" skipped="0" tests="11" name="tornipuolustus.tornipuolustus.TornipuolustusTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.7.0_25\jre\bin"/>
@@ -62,11 +62,11 @@
   </properties>
   <testcase time="0.001" classname="tornipuolustus.tornipuolustus.TornipuolustusTest" name="rakennettavaPiirtyyOikeinVapaana"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.TornipuolustusTest" name="rakennettavaPiirtyyOikeinVarattuna"/>
-  <testcase time="0.004" classname="tornipuolustus.tornipuolustus.TornipuolustusTest" name="starttaaminenLuoJaTayttaaKentan"/>
+  <testcase time="0.002" classname="tornipuolustus.tornipuolustus.TornipuolustusTest" name="starttaaminenLuoJaTayttaaKentan"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.TornipuolustusTest" name="kentanLuonnistaTyhjaRuudukko"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.TornipuolustusTest" name="kentanLuonnistaKoko"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.TornipuolustusTest" name="rakennettavaRuutuTyhja"/>
-  <testcase time="0.001" classname="tornipuolustus.tornipuolustus.TornipuolustusTest" name="rakennettavanVoiVapauttaa"/>
+  <testcase time="0" classname="tornipuolustus.tornipuolustus.TornipuolustusTest" name="rakennettavanVoiVapauttaa"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.TornipuolustusTest" name="kuljettavaPiirtyyOikein"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.TornipuolustusTest" name="rakennettavanSijaintiOikein"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.TornipuolustusTest" name="kuljettavanSijaintiOikein"/>
