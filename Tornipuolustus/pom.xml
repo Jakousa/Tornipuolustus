@@ -42,6 +42,10 @@
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
                 <version>0.30</version>
+		<configuration>
+			<failWhenNoMutations>false</failWhenNoMutations>
+			<verbose>true</verbose>
+		</configuration>
             </plugin>
         </plugins>
     </build>

@@ -22,7 +22,7 @@ public abstract class Ruutu {
         return y;
     }
     
-    public abstract void piirra();
+    //public abstract void piirra();
     
     
 }

@@ -12,9 +12,10 @@ public class Kuljettava extends Ruutu {
         super(x,y);
     }
     
+    
     @Override
-    public void piirra() {
-        System.out.print(">");
+    public String toString() {
+        return ">";
     }
 
 }

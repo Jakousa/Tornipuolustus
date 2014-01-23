@@ -8,9 +8,13 @@ public class Peli {
     public Peli(){
         kentta = new Kentta(10);
     }
+
+    public Kentta getKentta() {
+        return kentta;
+    }
     
     public void start() {
-        kentta.luo();
+        kentta.tayta();
         kentta.piirra();
     }
 

@@ -4,17 +4,30 @@ package tornipuolustus.ruudut;
 
 public class Rakennettava extends Ruutu {
 
-    private boolean varattu;
+    private boolean varaus;
     
     public Rakennettava(int x, int y) {
         super(x,y);
+        varaus = false;
+    }
+    
+    public void varaa(){
+        varaus = true;
+    }
+    
+    public void vapauta() {
+        varaus = false;
+    }
+    
+    public boolean getVaraus() {
+        return varaus;
     }
 
     @Override
-    public void piirra() {
-        if (varattu) {
-            System.out.print("T");
+    public String toString() {
+        if (varaus) {
+            return "T";
         }
-        System.out.print("O");
+        return "O";
     }
 }
