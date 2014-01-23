@@ -1,6 +1,7 @@
 package tornipuolustus.tornipuolustus;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import tornipuolustus.ruudut.*;
 
@@ -40,6 +41,7 @@ public class Kentta {
     }
     
     public void piirra() {
+        Collections.sort(ruudukko);
         for (Ruutu ruutu : ruudukko) {
             System.out.print(ruutu.toString());
             if (ruutu.getX() == this.koko-1) {

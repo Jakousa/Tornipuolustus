@@ -30,4 +30,9 @@ public class Rakennettava extends Ruutu {
         }
         return "O";
     }
+    
+    @Override
+    public int compareTo(Ruutu r) {
+        return super.compareTo(r);
+    }
 }

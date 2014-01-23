@@ -42,10 +42,17 @@
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
                 <version>0.30</version>
-		<configuration>
-			<failWhenNoMutations>false</failWhenNoMutations>
-			<verbose>true</verbose>
-		</configuration>
+                <configuration>
+                    <targetClasses>
+                        <param>tornipuolustus.ruudut*</param>
+                        <param>tornipuolustus.tornipuolustus*</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>tornipuolustus.ruudut*</param>
+                        <param>tornipuolustus.tornipuolustus*</param>
+                    </targetTests>
+                    <verbose>true</verbose>
+                </configuration>
             </plugin>
         </plugins>
     </build>
