@@ -18,6 +18,15 @@ public class Hirvio {
     public Hirvio(Sijainti sijainti, int suunta) {
         this.sijainti = sijainti;
         this.suunta = suunta;
+        this.elama = 100;
+    }
+    
+    public int getElama(){
+        return elama;
+    }
+    
+    public void setElama(int elama){
+        this.elama = elama;
     }
     
     public void setSuunta(int suunta) {

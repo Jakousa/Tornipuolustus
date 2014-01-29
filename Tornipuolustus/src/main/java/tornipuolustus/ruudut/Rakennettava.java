@@ -1,36 +1,40 @@
-
 package tornipuolustus.ruudut;
 
+import tornipuolustus.toimijat.Torni;
 
 public class Rakennettava extends Ruutu {
 
-    private boolean varaus;
-    
+    private Torni torni;
+
     public Rakennettava(int x, int y) {
-        super(x,y);
-        varaus = false;
+        super(x, y);
+        torni = null;
     }
-    
-    public void varaa(){
-        varaus = true;
+
+    public boolean rakennaTorni() {
+        if (torni == null) {
+            torni = new Torni();
+            return true;
+        }
+        return false;
     }
-    
-    public void vapauta() {
-        varaus = false;
-    }
-    
-    public boolean getVaraus() {
-        return varaus;
+
+    public boolean tuhoaTorni() {
+        if (torni != null) {
+            torni = null;
+            return true;
+        }
+        return false;
     }
 
     @Override
     public String toString() {
-        if (varaus) {
+        if (torni != null) {
             return "T";
         }
         return "#";
     }
-    
+
     @Override
     public int compareTo(Ruutu r) {
         return super.compareTo(r);

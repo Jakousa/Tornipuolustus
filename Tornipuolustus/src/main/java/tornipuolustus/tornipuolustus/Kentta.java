@@ -9,18 +9,32 @@ import tornipuolustus.toimijat.Torni;
 
 public class Kentta {
 
-    private List<Ruutu> kuljettavat;
-    private List<Ruutu> rakennettavat;
+    private List<Kuljettava> kuljettavat;
+    private List<Rakennettava> rakennettavat;
     private List<Hirvio> hirviot;
-    private List<Torni> tornit;
     private int koko;
 
     public Kentta(int koko) {
-        this.kuljettavat = new ArrayList<Ruutu>();
-        this.rakennettavat = new ArrayList<Ruutu>();
+        this.kuljettavat = new ArrayList<Kuljettava>();
+        this.rakennettavat = new ArrayList<Rakennettava>();
         this.hirviot = new ArrayList<Hirvio>();
-        this.tornit = new ArrayList<Torni>();
         this.koko = koko;
+    }
+    
+    public void rakennaTorni(Sijainti sijainti){
+        for (Rakennettava ruutu : rakennettavat) {
+            if (sijainti.equals(ruutu.getSijainti())) {
+                boolean onnistuiko = ruutu.rakennaTorni();
+            }
+        }
+    }
+    
+    public void poistaTorni(Sijainti sijainti){
+        for (Rakennettava ruutu : rakennettavat) {
+            if (sijainti.equals(ruutu.getSijainti())) {
+                boolean onnistuiko = ruutu.tuhoaTorni();
+            }
+        }
     }
     
     
