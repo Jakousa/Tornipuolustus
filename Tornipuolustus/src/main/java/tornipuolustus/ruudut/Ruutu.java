@@ -4,33 +4,29 @@
  */
 package tornipuolustus.ruudut;
 
+import tornipuolustus.tornipuolustus.Sijainti;
+
 public abstract class Ruutu implements Comparable<Ruutu> {
 
-    private int x;
-    private int y;
+    private Sijainti sijainti;
 
     public Ruutu(int x, int y) {
-        this.x = x;
-        this.y = y;
+        this.sijainti = new Sijainti(x,y);
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
+    public Sijainti getSijainti() {
+        return sijainti;
     }
 
     @Override
     public int compareTo(Ruutu r) {
-        if (r.getY() < this.getY()) {
+        if (r.getSijainti().getY() < this.getSijainti().getY()) {
             return 1;
         }
-        if (r.getY() > this.getY()) {
+        if (r.getSijainti().getY() > this.getSijainti().getY()) {
             return -1;
         }
-        if (r.getX() < this.getX()) {
+        if (r.getSijainti().getX() < this.getSijainti().getX()) {
             return 1;
         }
         return -1;

@@ -28,7 +28,7 @@ public class Rakennettava extends Ruutu {
         if (varaus) {
             return "T";
         }
-        return "O";
+        return "#";
     }
     
     @Override
