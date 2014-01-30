@@ -58,7 +58,7 @@ public class Kentta {
             if (h.getElama() <= 0) {
                 poistettavat.add(h);
             }
-            h.liiku();
+            h.liiku(kuljettavat);
         }
         hirviot.removeAll(poistettavat);
     }
