@@ -23,34 +23,11 @@ public class TornipuolustusTest {
         assertTrue(kentta.getRuudukko().isEmpty());
     }
 
-    @Test
-    public void kentanLuonnistaKoko() {
-        assertEquals(kentta.getKoko(), 10);
-    }
-
-    @Test
-    public void rakennettavaRuutuTyhja() {
-        assertTrue(!rakennettava.getVaraus());
-    }
 
     @Test
     public void rakennettavaPiirtyyOikeinVapaana() {
-        String piirros = "O";
+        String piirros = "#";
         assertEquals(rakennettava.toString(), piirros);
-    }
-
-    @Test
-    public void rakennettavaPiirtyyOikeinVarattuna() {
-        String piirros = "T";
-        rakennettava.varaa();
-        assertEquals(rakennettava.toString(), piirros);
-    }
-
-    @Test
-    public void rakennettavanVoiVapauttaa() {
-        rakennettava.varaa();
-        rakennettava.vapauta();
-        assertTrue(!rakennettava.getVaraus());
     }
 
     @Test
@@ -61,41 +38,40 @@ public class TornipuolustusTest {
 
     @Test
     public void rakennettavanSijaintiOikein() {
-        assertEquals(rakennettava.getX(), 1);
-        assertEquals(rakennettava.getY(), 8);
+        assertEquals(rakennettava.getSijainti().getX(), 1);
+        assertEquals(rakennettava.getSijainti().getY(), 8);
     }
 
     @Test
     public void kuljettavanSijaintiOikein() {
-        assertEquals(kuljettava.getX(), 0);
-        assertEquals(kuljettava.getY(), 8);
+        assertEquals(kuljettava.getSijainti().getX(), 0);
+        assertEquals(kuljettava.getSijainti().getY(), 8);
     }
     
     @Test
     public void jarjestaminenOnnistuu() {
-        Ruutu a = new Kuljettava(2,0);
-        Ruutu b = new Kuljettava(0,0);
-        Ruutu c = new Rakennettava(1,0);
-        Ruutu d = new Rakennettava(0,2);
-        Ruutu e = new Rakennettava(1,2);
-        Ruutu f = new Rakennettava(0,1);
-        kentta.getRuudukko().add(a);
-        kentta.getRuudukko().add(b);
-        kentta.getRuudukko().add(c);
-        kentta.getRuudukko().add(d);
-        kentta.getRuudukko().add(e);
-        kentta.getRuudukko().add(f);
-        Collections.sort(kentta.getRuudukko());
-        assertEquals(kentta.getRuudukko().get(0), b);
-        assertEquals(kentta.getRuudukko().get(1), c);
-        assertEquals(kentta.getRuudukko().get(2), a);
-        assertEquals(kentta.getRuudukko().get(3), f);
-        assertEquals(kentta.getRuudukko().get(4), d);
-        assertEquals(kentta.getRuudukko().get(5), e);
+        Kuljettava a = new Kuljettava(2,0);
+        Kuljettava b = new Kuljettava(0,0);
+        Kuljettava c = new Kuljettava(1,0);
+        Kuljettava d = new Kuljettava(0,2);
+        Kuljettava e = new Kuljettava(1,2);
+        Kuljettava f = new Kuljettava(0,1);
+        kentta.getKuljettavat().add(a);
+        kentta.getKuljettavat().add(b);
+        kentta.getKuljettavat().add(c);
+        kentta.getKuljettavat().add(d);
+        kentta.getKuljettavat().add(e);
+        kentta.getKuljettavat().add(f);
+        Collections.sort(kentta.getKuljettavat());
+        assertEquals(kentta.getKuljettavat().get(0), b);
+        assertEquals(kentta.getKuljettavat().get(1), c);
+        assertEquals(kentta.getKuljettavat().get(2), a);
+        assertEquals(kentta.getKuljettavat().get(3), f);
+        assertEquals(kentta.getKuljettavat().get(4), d);
+        assertEquals(kentta.getKuljettavat().get(5), e);
     }
     
-    //HUOM! Seuraavia testejä ehkä muokattava jos lisätään
-    //kyky luoda erilaisia kenttiä
+    //HUOM! Seuraavia testejä muokattava
     @Test
     public void kentanTaytostaRuudukonAlkioidenMaaraKoonNelio() {
         kentta.tayta();
@@ -103,18 +79,18 @@ public class TornipuolustusTest {
     }
 
     @Test
-    public void tayttoLisaaKuljettaviaJaRakennettavia() {
+    public void tayttoLisaaRakennettavia() {
         kentta.tayta();
-        String rakennettavako = kentta.getRuudukko().get(1).toString();
-        String kuljettavako = kentta.getRuudukko().get(59).toString();
-        assertEquals(rakennettavako, "O");
-        assertEquals(kuljettavako, ">");
+        String testi1 = kentta.getRuudukko().get(1).toString();
+        String testi2 = kentta.getRuudukko().get(49).toString();
+        assertEquals(testi1, ">");
+        assertEquals(testi2, "#");
     }
 
-    @Test
-    public void starttaaminenLuoJaTayttaaKentan() {
-        Peli testi = new Peli();
-        testi.start();
-        assertEquals(testi.getKentta().getRuudukko().size(), 100);
-    }
+//    @Test
+//    public void starttaaminenLuoJaTayttaaKentan() {
+//       Peli testi = new Peli();
+//        testi.start();
+//        assertEquals(testi.getKentta().getRuudukko().size(), 100);
+//    }
 }

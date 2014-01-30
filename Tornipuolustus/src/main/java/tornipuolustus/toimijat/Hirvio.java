@@ -25,11 +25,34 @@ public class Hirvio {
     public int getElama() {
         return elama;
     }
+    
+    public void teeSuunta() {
+        
+    }
 
-    public void etsiSuunta(ArrayList<Kuljettava> kuljettavat) {
+    public void etsiPaamaara(ArrayList<Kuljettava> kuljettavat) { //Hyhhyh että on rumaa
+        Kuljettava vaihtoehto1;
+        double vaihtoehto1Etaisyys = 0;
+        Kuljettava vaihtoehto2;
+        double vaihtoehto2Etaisyys = 0;
+        
         for (Kuljettava kuljettava : kuljettavat) {
+            double kuljettavanEtaisyys = kuljettava.getSijainti().etaisyys(sijainti);
+            
             if (this.sijainti.equals(kuljettava.getSijainti())) {
-                //jaa a
+                continue;
+            }
+            
+            if (kuljettavat.indexOf(kuljettava) == 0) {
+                vaihtoehto1Etaisyys = kuljettava.getSijainti().etaisyys(sijainti);
+                vaihtoehto1 = kuljettava;
+                vaihtoehto2Etaisyys = kuljettava.getSijainti().etaisyys(sijainti);
+                vaihtoehto2 = kuljettava;
+            }
+            
+            if (kuljettavanEtaisyys <= vaihtoehto1Etaisyys) {
+                if (kuljettavanEtaisyys < vaihtoehto2Etaisyys)
+                vaihtoehto1 = kuljettava;
             }
         }
     }
@@ -51,6 +74,7 @@ public class Hirvio {
     }
 
     public void liiku() {
+        edellinen = sijainti;
         if (suunta == 1) {
             sijainti.setY(sijainti.getY() - 1);
         } else if (suunta == 2) {

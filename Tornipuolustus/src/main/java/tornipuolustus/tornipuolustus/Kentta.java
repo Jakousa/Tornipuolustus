@@ -21,6 +21,17 @@ public class Kentta {
         this.koko = koko;
     }
     
+    public List<Ruutu> getRuudukko() {
+        List<Ruutu> ruudukko = new ArrayList<>();
+        ruudukko.addAll(kuljettavat);
+        ruudukko.addAll(rakennettavat);
+        return ruudukko;
+    }
+    
+    public List<Kuljettava> getKuljettavat() {
+        return kuljettavat;
+    }
+    
     public boolean rakennaTorni(int x, int y){
         boolean onnistuiko = false;
         for (Rakennettava ruutu : rakennettavat) {
@@ -57,7 +68,7 @@ public class Kentta {
                               //tällä hetkellä riittäköön jokin default tyyppinen
                               //muokkaaminen tulee vaikuttamaan testeihin myös
         for (int i = 0; i < this.koko; i++) {
-            if (i == 2) {
+            if (i == 5) {
                 for (int j = 0; j < this.koko; j++) {
                     kuljettavat.add(new Kuljettava(j, i));
                 }

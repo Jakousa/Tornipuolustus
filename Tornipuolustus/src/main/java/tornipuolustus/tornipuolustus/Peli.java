@@ -9,7 +9,7 @@ public class Peli {
     private boolean jatkuu;
 
     public Peli(Scanner lukija) {
-        kentta = new Kentta(5);
+        kentta = new Kentta(10);
         jatkuu = true;
         this.lukija = lukija;
     }
