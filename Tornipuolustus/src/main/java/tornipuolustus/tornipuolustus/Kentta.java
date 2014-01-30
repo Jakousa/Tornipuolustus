@@ -21,29 +21,43 @@ public class Kentta {
         this.koko = koko;
     }
     
-    public void rakennaTorni(Sijainti sijainti){
+    public boolean rakennaTorni(int x, int y){
+        boolean onnistuiko = false;
         for (Rakennettava ruutu : rakennettavat) {
-            if (sijainti.equals(ruutu.getSijainti())) {
-                boolean onnistuiko = ruutu.rakennaTorni();
+            if (ruutu.getSijainti().equals(new Sijainti(x,y))) {
+                onnistuiko = ruutu.rakennaTorni();
             }
         }
+        return onnistuiko;
     }
     
-    public void poistaTorni(Sijainti sijainti){
+    public boolean poistaTorni(int x, int y){
+        boolean onnistuiko = false;
         for (Rakennettava ruutu : rakennettavat) {
-            if (sijainti.equals(ruutu.getSijainti())) {
-                boolean onnistuiko = ruutu.tuhoaTorni();
+            if (ruutu.getSijainti().equals(new Sijainti(x,y))) {
+                onnistuiko = ruutu.tuhoaTorni();
             }
         }
+        return onnistuiko;
     }
     
+    public void liikutaHirvioita(){
+        List<Hirvio> poistettavat = new ArrayList<>();
+        for (Hirvio h : hirviot) {
+            if (h.getElama() <= 0) {
+                poistettavat.add(h);
+            }
+            h.liiku();
+        }
+        hirviot.removeAll(poistettavat);
+    }
     
 
     public void tayta() {     //Laajennus? lisätään parametrit ja ladataan jostakin millainen kenttä
                               //tällä hetkellä riittäköön jokin default tyyppinen
                               //muokkaaminen tulee vaikuttamaan testeihin myös
         for (int i = 0; i < this.koko; i++) {
-            if (i == 5) {
+            if (i == 2) {
                 for (int j = 0; j < this.koko; j++) {
                     kuljettavat.add(new Kuljettava(j, i));
                 }

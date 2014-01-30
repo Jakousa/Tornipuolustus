@@ -1,21 +1,43 @@
 package tornipuolustus.tornipuolustus;
 
+import java.util.Scanner;
 
 public class Peli {
 
     private Kentta kentta;
-    
-    public Peli(){
-        kentta = new Kentta(10);
+    private Scanner lukija;
+    private boolean jatkuu;
+
+    public Peli(Scanner lukija) {
+        kentta = new Kentta(5);
+        jatkuu = true;
+        this.lukija = lukija;
     }
 
     public Kentta getKentta() {
         return kentta;
     }
-    
+
     public void start() {
         kentta.tayta();
-        kentta.piirra();
-    }
+        while (jatkuu) {
+            kentta.piirra();
 
+
+            System.out.println("Lisää torni: 1 / Aloita: 2 / Poistu: 0");
+            int valinta = Integer.parseInt(lukija.nextLine());
+            
+            if (valinta == 1) {
+                System.out.println("x koordinaatti: ");
+                int x = Integer.parseInt(lukija.nextLine());
+                System.out.println("y koordinaatti: ");
+                int y = Integer.parseInt(lukija.nextLine());
+                if(kentta.rakennaTorni(x, y)) {
+                    System.out.println("Rakennus onnistui");
+                } else {
+                    System.out.println("Rakennus epäonnistui");
+                }
+            }
+        }
+    }
 }

@@ -2,55 +2,63 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package tornipuolustus.toimijat;
 
+import java.util.ArrayList;
 import tornipuolustus.ruudut.Kuljettava;
 import tornipuolustus.tornipuolustus.Sijainti;
 
-
 public class Hirvio {
-    
+
     private int suunta;
     private Sijainti sijainti;
+    private Sijainti edellinen;
     private int elama;
-    
+
     public Hirvio(Sijainti sijainti, int suunta) {
         this.sijainti = sijainti;
         this.suunta = suunta;
         this.elama = 100;
+        this.edellinen = sijainti;
     }
-    
-    public int getElama(){
+
+    public int getElama() {
         return elama;
     }
-    
-    public void setElama(int elama){
+
+    public void etsiSuunta(ArrayList<Kuljettava> kuljettavat) {
+        for (Kuljettava kuljettava : kuljettavat) {
+            if (this.sijainti.equals(kuljettava.getSijainti())) {
+                //jaa a
+            }
+        }
+    }
+
+    public void setElama(int elama) {
         this.elama = elama;
     }
-    
+
     public void setSuunta(int suunta) {
         this.suunta = suunta;
     }
-    
+
     public Sijainti getSijainti() {
         return sijainti;
     }
-    
+
     public int getSuunta() {
         return suunta;
     }
-    
-    
+
     public void liiku() {
         if (suunta == 1) {
-            sijainti.setY(sijainti.getY()-1);
+            sijainti.setY(sijainti.getY() - 1);
         } else if (suunta == 2) {
-            sijainti.setX(sijainti.getX()+1);
+            sijainti.setX(sijainti.getX() + 1);
         } else if (suunta == 3) {
-            sijainti.setY(sijainti.getY()+1);
+            sijainti.setY(sijainti.getY() + 1);
         } else {
-            sijainti.setX(sijainti.getX()-1);
+            sijainti.setX(sijainti.getX() - 1);
         }
     }
 }
