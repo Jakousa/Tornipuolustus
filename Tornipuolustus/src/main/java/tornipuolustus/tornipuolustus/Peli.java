@@ -24,20 +24,31 @@ public class Peli {
             kentta.piirra();
 
 
-            System.out.println("Lisää torni: 1 / Aloita: 2 / Poistu: 0");
+            System.out.println("Lisää torni: 1 / Poista torni: 2 / Aloita: 3 / Poistu: 0");
             int valinta = Integer.parseInt(lukija.nextLine());
-            
+
             if (valinta == 1) {
-                System.out.println("x koordinaatti: ");
-                int x = Integer.parseInt(lukija.nextLine());
-                System.out.println("y koordinaatti: ");
-                int y = Integer.parseInt(lukija.nextLine());
-                if(kentta.rakennaTorni(x, y)) {
-                    System.out.println("Rakennus onnistui");
-                } else {
-                    System.out.println("Rakennus epäonnistui");
-                }
+                valinta1();
+            }
+            if (valinta == 2) {
+                valinta2();
             }
         }
+    }
+
+    private void valinta1() {
+        System.out.println("x koordinaatti: ");
+        int x = Integer.parseInt(lukija.nextLine());
+        System.out.println("y koordinaatti: ");
+        int y = Integer.parseInt(lukija.nextLine());
+        if (kentta.rakennaTorni(x, y)) {
+            System.out.println("Rakennus onnistui");
+        } else {
+            System.out.println("Rakennus epäonnistui");
+        }
+    }
+    
+    private void valinta2() {
+        System.out.println("");
     }
 }
