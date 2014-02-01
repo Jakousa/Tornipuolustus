@@ -1,3 +1,6 @@
 14.1.2014 1h gitHubia ja aloitusluento
 22.1.2014 2h luokkakaavio paperilla ja "pelikentän" valmistelua 
 23.1.2014 4h Testejä deadlinea varten, luokkakaavio siistiksi.
+29.1.2014 2h Kenttä valmis
+30.1.2014 6h Hirviot ja tornit olemaan
+1.2.2014 2h Hirviot kentälle liikkumaan
