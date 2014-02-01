@@ -16,10 +16,9 @@ public class Hirvio {
     private Sijainti edellinen;
     private int elama;
 
-    public Hirvio(Sijainti sijainti, int suunta) {
+    public Hirvio(Sijainti sijainti, int elama) {
         this.sijainti = sijainti;
-        this.suunta = suunta;
-        this.elama = 100;
+        this.elama = elama;
         this.edellinen = sijainti;
     }
 
@@ -29,7 +28,7 @@ public class Hirvio {
 
     public void teeSuunta(Sijainti minne) {
         int y = minne.getY() - sijainti.getY();
-        int x = minne.getX() - sijainti.getY();
+        int x = minne.getX() - sijainti.getX();
         if (x == 0 && y == 0) {
             System.out.println("Jotain meni vikaan by: teeSuunta");
         }
@@ -65,24 +64,22 @@ public class Hirvio {
                     continue;
                 }
 
-                if (kuljettavat.indexOf(kuljettava) == 0) {
-                    vaihtoehto1Etaisyys = kuljettava.getSijainti().etaisyys(sijainti);
-                    vaihtoehto1 = kuljettava;
-                    vaihtoehto2Etaisyys = kuljettava.getSijainti().etaisyys(sijainti);
-                    vaihtoehto2 = kuljettava;
-                }
-
-                if (kuljettavanEtaisyys <= vaihtoehto1Etaisyys) {
-                    if (vaihtoehto1Etaisyys < vaihtoehto2Etaisyys) {
-                        vaihtoehto2 = vaihtoehto1;
+                if (kuljettavanEtaisyys == 1.0) {
+                    if (vaihtoehto1 == null) {
+                        vaihtoehto1 = kuljettava;
+                        vaihtoehto1Etaisyys = 1.0;
+                    } else {
+                        vaihtoehto2 = kuljettava;
+                        vaihtoehto1Etaisyys = 1.0;
                     }
-                    vaihtoehto1 = kuljettava;
+
                 }
             }
 
-            if (vaihtoehto1Etaisyys != vaihtoehto2Etaisyys) {
-                System.out.println("Jotain meni vikaan by: etsiPaamaara");
+            if (vaihtoehto1 != null && vaihtoehto2 == null) {
+                teeSuunta(vaihtoehto1.getSijainti());
             } else {
+
                 double etaisyysEdelliseen1 = vaihtoehto1.getSijainti().etaisyys(edellinen);
                 double etaisyysEdelliseen2 = vaihtoehto2.getSijainti().etaisyys(edellinen);
                 if (etaisyysEdelliseen1 < etaisyysEdelliseen2) {
@@ -114,13 +111,13 @@ public class Hirvio {
         etsiPaamaara(kuljettavat);
         edellinen = sijainti;
         if (suunta == 1) {
-            sijainti.setY(sijainti.getY() - 1);
+            this.sijainti = new Sijainti(sijainti.getX(),sijainti.getY() - 1);
         } else if (suunta == 2) {
-            sijainti.setX(sijainti.getX() + 1);
+            this.sijainti = new Sijainti(sijainti.getX() + 1, sijainti.getY());
         } else if (suunta == 3) {
-            sijainti.setY(sijainti.getY() + 1);
+            this.sijainti = new Sijainti(sijainti.getX(),sijainti.getY() + 1);
         } else {
-            sijainti.setX(sijainti.getX() - 1);
+            this.sijainti = new Sijainti(sijainti.getX() - 1, sijainti.getY());
         }
     }
 }

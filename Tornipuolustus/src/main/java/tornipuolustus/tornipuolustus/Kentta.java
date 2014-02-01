@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import tornipuolustus.ruudut.*;
 import tornipuolustus.toimijat.Hirvio;
-import tornipuolustus.toimijat.Torni;
 
 public class Kentta {
 
@@ -20,39 +19,61 @@ public class Kentta {
         this.hirviot = new ArrayList<Hirvio>();
         this.koko = koko;
     }
-    
+
     public List<Ruutu> getRuudukko() {
         List<Ruutu> ruudukko = new ArrayList<>();
         ruudukko.addAll(kuljettavat);
         ruudukko.addAll(rakennettavat);
         return ruudukko;
     }
-    
+
     public List<Kuljettava> getKuljettavat() {
         return kuljettavat;
     }
-    
-    public boolean rakennaTorni(int x, int y){
+
+    public boolean rakennaTorni(int x, int y) {
         boolean onnistuiko = false;
         for (Rakennettava ruutu : rakennettavat) {
-            if (ruutu.getSijainti().equals(new Sijainti(x,y))) {
+            if (ruutu.getSijainti().equals(new Sijainti(x, y))) {
                 onnistuiko = ruutu.rakennaTorni();
             }
         }
         return onnistuiko;
     }
-    
-    public boolean poistaTorni(int x, int y){
+
+    public boolean poistaTorni(int x, int y) {
         boolean onnistuiko = false;
         for (Rakennettava ruutu : rakennettavat) {
-            if (ruutu.getSijainti().equals(new Sijainti(x,y))) {
+            if (ruutu.getSijainti().equals(new Sijainti(x, y))) {
                 onnistuiko = ruutu.tuhoaTorni();
             }
         }
         return onnistuiko;
     }
+
+    public void lisaaHirvio(int elama) {
+        for (Kuljettava kuljettava : kuljettavat) {
+            if (kuljettava.getSijainti().getX() == 0) {
+                hirviot.add(new Hirvio(kuljettava.getSijainti(), 100));
+            }
+        }
+    }
     
-    public void liikutaHirvioita(){
+    public boolean paasikoLapi() {
+        for (Hirvio hirvio : hirviot) {
+            for (Kuljettava kuljettava : kuljettavat) {
+                if (kuljettava.getSijainti().getX() == this.koko-1) {
+                    if (hirvio.getSijainti().equals(kuljettava.getSijainti())) {
+                        hirvio.setElama(0);
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public void liikutaHirvioita() {
         List<Hirvio> poistettavat = new ArrayList<>();
         for (Hirvio h : hirviot) {
             if (h.getElama() <= 0) {
@@ -62,13 +83,12 @@ public class Kentta {
         }
         hirviot.removeAll(poistettavat);
     }
-    
 
     public void tayta() {     //Laajennus? lisätään parametrit ja ladataan jostakin millainen kenttä
-                              //tällä hetkellä riittäköön jokin default tyyppinen
-                              //muokkaaminen tulee vaikuttamaan testeihin myös
+        //tällä hetkellä riittäköön jokin default tyyppinen
+        //muokkaaminen tulee vaikuttamaan testeihin myös
         for (int i = 0; i < this.koko; i++) {
-            if (i == 5) {
+            if (i == koko/2) {
                 for (int j = 0; j < this.koko; j++) {
                     kuljettavat.add(new Kuljettava(j, i));
                 }
@@ -79,16 +99,27 @@ public class Kentta {
             }
         }
     }
-    
+
     public void piirra() {
         List<Ruutu> ruudukko = new ArrayList<>();
-        
+
         ruudukko.addAll(kuljettavat);
         ruudukko.addAll(rakennettavat);
         Collections.sort(ruudukko);
         for (Ruutu ruutu : ruudukko) {
-            System.out.print(ruutu.toString());
-            if (ruutu.getSijainti().getX() == this.koko-1) {
+            boolean morko = false;
+            for (Hirvio hirvio : hirviot) { //väliaikainen
+                if (ruutu.getSijainti().equals(hirvio.getSijainti())) {
+                    morko = true;
+                }
+            }
+            if (morko) {
+                System.out.print("H");
+            } else {
+                System.out.print(ruutu.toString());
+            }
+
+            if (ruutu.getSijainti().getX() == this.koko - 1) {
                 System.out.println("");
             }
         }

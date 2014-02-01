@@ -20,11 +20,11 @@ public class Peli {
         return kentta;
     }
 
-    public void start() {
+    public void start() throws InterruptedException {
         kentta.tayta();
         while (jatkuu) {
             kentta.piirra();
-            
+
             System.out.println("Lisää torni: 1 / Poista torni: 2 / Aloita: 3 / Poistu: 0");
             int valinta = Integer.parseInt(lukija.nextLine());
 
@@ -37,11 +37,27 @@ public class Peli {
             if (valinta == 2) {
                 valinta2();
             }
-            
+
             if (valinta == 3) {
-                
+                for (int i = 0; i < 20; i++) {
+                    if (i % 4 == 0) {
+                        kentta.lisaaHirvio(100);
+                    }
+                    kentta.piirra();
+                    if (kentta.paasikoLapi()) {
+                        elamasi--;
+                    }
+                    kentta.liikutaHirvioita();
+
+                    System.out.println("");
+                    System.out.println("elamasi: " + elamasi);
+                    Thread.sleep(600);
+                }
             }
-            
+
+            if (elamasi <= 0) {
+                jatkuu = false;
+            }
         }
         System.out.println("Peli päättyi");
     }

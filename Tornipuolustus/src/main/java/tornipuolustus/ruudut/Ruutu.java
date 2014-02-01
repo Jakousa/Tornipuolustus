@@ -20,15 +20,6 @@ public abstract class Ruutu implements Comparable<Ruutu> {
 
     @Override
     public int compareTo(Ruutu r) {
-        if (r.getSijainti().getY() < this.getSijainti().getY()) {
-            return 1;
-        }
-        if (r.getSijainti().getY() > this.getSijainti().getY()) {
-            return -1;
-        }
-        if (r.getSijainti().getX() < this.getSijainti().getX()) {
-            return 1;
-        }
-        return -1;
+        return this.sijainti.compareTo(r.getSijainti());
     }
 }
