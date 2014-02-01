@@ -13,7 +13,7 @@ public class Peli {
         kentta = new Kentta(10);
         jatkuu = true;
         this.lukija = lukija;
-        elamasi = 7;
+        elamasi = 11;
     }
 
     public Kentta getKentta() {
@@ -39,24 +39,28 @@ public class Peli {
             }
 
             if (valinta == 3) {
-                for (int i = 0; i < 20; i++) {
-                    if (i % 4 == 0) {
-                        kentta.lisaaHirvio(100);
+                for (int i = 0; i < 40; i++) {
+                    if (i%3 == 0 && i < 20) {
+                        kentta.lisaaHirvio(9);
                     }
+                    
+                    kentta.liikutaHirvioita();
+                    
                     kentta.piirra();
+                    kentta.tornitAmpuvat();
+
                     if (kentta.paasikoLapi()) {
                         elamasi--;
                     }
-                    kentta.liikutaHirvioita();
-
                     System.out.println("");
                     System.out.println("elamasi: " + elamasi);
-                    Thread.sleep(600);
+                    Thread.sleep(400);
+                    
+                    if (elamasi <= 0) {
+                        jatkuu = false;
+                        break;
+                    }
                 }
-            }
-
-            if (elamasi <= 0) {
-                jatkuu = false;
             }
         }
         System.out.println("Peli päättyi");

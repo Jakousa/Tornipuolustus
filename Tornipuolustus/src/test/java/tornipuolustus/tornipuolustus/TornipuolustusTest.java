@@ -32,7 +32,7 @@ public class TornipuolustusTest {
 
     @Test
     public void kuljettavaPiirtyyOikein() {
-        String piirros = ">";
+        String piirros = " ";
         assertEquals(kuljettava.toString(), piirros);
     }
 
@@ -83,7 +83,7 @@ public class TornipuolustusTest {
         kentta.tayta();
         String testi1 = kentta.getRuudukko().get(1).toString();
         String testi2 = kentta.getRuudukko().get(49).toString();
-        assertEquals(testi1, ">");
+        assertEquals(testi1, " ");
         assertEquals(testi2, "#");
     }
 

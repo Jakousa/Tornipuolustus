@@ -11,6 +11,10 @@ public class Rakennettava extends Ruutu {
         torni = null;
     }
 
+    public Torni getTorni() {
+        return torni;
+    }
+
     public boolean rakennaTorni() {
         if (torni == null) {
             torni = new Torni();

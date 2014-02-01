@@ -54,7 +54,7 @@ public class Kentta {
     public void lisaaHirvio(int elama) {
         for (Kuljettava kuljettava : kuljettavat) {
             if (kuljettava.getSijainti().getX() == 0) {
-                hirviot.add(new Hirvio(kuljettava.getSijainti(), 100));
+                hirviot.add(new Hirvio(kuljettava.getSijainti(), elama));
             }
         }
     }
@@ -72,6 +72,15 @@ public class Kentta {
         }
         return false;
     }
+    
+    public void tornitAmpuvat() {
+        for (Rakennettava rakennettava : rakennettavat) {
+            if (rakennettava.getTorni() != null) {
+                rakennettava.getTorni().etsiKohde(hirviot, rakennettava.getSijainti());
+                rakennettava.getTorni().ammu();
+            }
+        }
+    }
 
     public void liikutaHirvioita() {
         List<Hirvio> poistettavat = new ArrayList<>();
@@ -84,18 +93,51 @@ public class Kentta {
         hirviot.removeAll(poistettavat);
     }
 
-    public void tayta() {     //Laajennus? lisätään parametrit ja ladataan jostakin millainen kenttä
-        //tällä hetkellä riittäköön jokin default tyyppinen
-        //muokkaaminen tulee vaikuttamaan testeihin myös
-        for (int i = 0; i < this.koko; i++) {
-            if (i == koko/2) {
-                for (int j = 0; j < this.koko; j++) {
-                    kuljettavat.add(new Kuljettava(j, i));
-                }
+    public void tayta() {
+//        for (int i = 0; i < this.koko; i++) {
+//            if (i == koko/2) {
+//                for (int j = 0; j < this.koko; j++) {
+//                    kuljettavat.add(new Kuljettava(j, i));
+//                }
+//            } else {
+//                for (int j = 0; j < this.koko; j++) {
+//                    rakennettavat.add(new Rakennettava(j, i));
+//                }
+//            }
+//        }
+        
+        for (int i = 0; i < koko; i++) {
+            rakennettavat.add(new Rakennettava(i,0));
+        }
+        for (int i = 0; i < koko; i++) {
+            if (i < koko/2) {
+                kuljettavat.add(new Kuljettava(i, 1));
             } else {
-                for (int j = 0; j < this.koko; j++) {
-                    rakennettavat.add(new Rakennettava(j, i));
+                rakennettavat.add(new Rakennettava(i,1));
+            }
+        }
+        for (int i = 0; i < koko; i++) {
+            for (int j = 2; j < 7; j++) {
+                if (i == koko/2-1) {
+                    kuljettavat.add(new Kuljettava(i, j));
+                } else {
+                    rakennettavat.add(new Rakennettava(i,j));
                 }
+                
+            }
+        }
+        for (int i = 0; i < koko; i++) {
+            if (i > koko/2 - 2) {
+                kuljettavat.add(new Kuljettava(i,7)); 
+            } else {
+                rakennettavat.add(new Rakennettava(i,7));
+            }
+            
+        }
+        for (int i = 8; i < koko; i++) {
+            for (int j = 0; j < koko; j++) {
+                rakennettavat.add(new Rakennettava(j,i));
+                
             }
         }
     }
@@ -107,14 +149,16 @@ public class Kentta {
         ruudukko.addAll(rakennettavat);
         Collections.sort(ruudukko);
         for (Ruutu ruutu : ruudukko) {
-            boolean morko = false;
+            int morko = 0;
             for (Hirvio hirvio : hirviot) { //väliaikainen
                 if (ruutu.getSijainti().equals(hirvio.getSijainti())) {
-                    morko = true;
+                    morko = hirvio.getElama();
                 }
             }
-            if (morko) {
-                System.out.print("H");
+            if (ruutu.getClass() == kuljettavat.get(0).getClass() && ruutu.getSijainti().getX() == koko-1 ) {
+                System.out.print("P");
+            } else if (morko != 0) {
+                System.out.print(morko);
             } else {
                 System.out.print(ruutu.toString());
             }

@@ -13,7 +13,7 @@ public class Torni {
     private int voima;
 
     public Torni() {
-        this.voima = 10;
+        this.voima = 1;
     }
 
     public void ammu() {

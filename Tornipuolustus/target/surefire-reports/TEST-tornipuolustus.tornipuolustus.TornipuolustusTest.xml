@@ -65,7 +65,7 @@
   <testcase time="0" classname="tornipuolustus.tornipuolustus.TornipuolustusTest" name="rakennettavanSijaintiOikein"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.TornipuolustusTest" name="kuljettavanSijaintiOikein"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.TornipuolustusTest" name="jarjestaminenOnnistuu"/>
-  <testcase time="0.002" classname="tornipuolustus.tornipuolustus.TornipuolustusTest" name="tayttoLisaaRakennettavia"/>
+  <testcase time="0" classname="tornipuolustus.tornipuolustus.TornipuolustusTest" name="tayttoLisaaRakennettavia"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.TornipuolustusTest" name="rakennettavaPiirtyyOikeinVapaana"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.TornipuolustusTest" name="kentanTaytostaRuudukonAlkioidenMaaraKoonNelio"/>
 </testsuite>
