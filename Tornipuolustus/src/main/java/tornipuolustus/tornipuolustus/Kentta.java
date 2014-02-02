@@ -30,6 +30,10 @@ public class Kentta {
     public List<Kuljettava> getKuljettavat() {
         return kuljettavat;
     }
+    
+    public List<Rakennettava> getRakennettavat() {
+        return rakennettavat;
+    }
 
     public boolean rakennaTorni(int x, int y) {
         boolean onnistuiko = false;
