@@ -29,16 +29,13 @@ public class Hirvio {
     public void teeSuunta(Sijainti minne) {
         int y = minne.getY() - sijainti.getY();
         int x = minne.getX() - sijainti.getX();
-        if (x == 0 && y == 0) {
-            System.out.println("Jotain meni vikaan by: teeSuunta");
-        }
-        if (y == -1) {
+        if (y < 0) {
             suunta = 1;
-        } else if (x == 1) {
+        } else if (x > 0) {
             suunta = 2;
-        } else if (y == 1) {
+        } else if (y > 0) {
             suunta = 3;
-        } else if (x == -1) {
+        } else if (x < 0) {
             suunta = 4;
         }
     }
@@ -64,15 +61,11 @@ public class Hirvio {
                     continue;
                 }
 
-                if (kuljettavanEtaisyys == 1.0) {
-                    if (vaihtoehto1 == null) {
-                        vaihtoehto1 = kuljettava;
-                        vaihtoehto1Etaisyys = 1.0;
-                    } else {
-                        vaihtoehto2 = kuljettava;
-                        vaihtoehto1Etaisyys = 1.0;
-                    }
-
+                if (kuljettavanEtaisyys <= vaihtoehto1Etaisyys) {
+                    vaihtoehto2 = vaihtoehto1;
+                    vaihtoehto2Etaisyys = vaihtoehto1Etaisyys;
+                    vaihtoehto1 = kuljettava;
+                    vaihtoehto1Etaisyys = this.sijainti.etaisyys(vaihtoehto1.getSijainti());
                 }
             }
 
@@ -111,11 +104,11 @@ public class Hirvio {
         etsiPaamaara(kuljettavat);
         edellinen = sijainti;
         if (suunta == 1) {
-            this.sijainti = new Sijainti(sijainti.getX(),sijainti.getY() - 1);
+            this.sijainti = new Sijainti(sijainti.getX(), sijainti.getY() - 1);
         } else if (suunta == 2) {
             this.sijainti = new Sijainti(sijainti.getX() + 1, sijainti.getY());
         } else if (suunta == 3) {
-            this.sijainti = new Sijainti(sijainti.getX(),sijainti.getY() + 1);
+            this.sijainti = new Sijainti(sijainti.getX(), sijainti.getY() + 1);
         } else {
             this.sijainti = new Sijainti(sijainti.getX() - 1, sijainti.getY());
         }

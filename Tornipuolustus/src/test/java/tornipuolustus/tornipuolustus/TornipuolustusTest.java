@@ -115,6 +115,14 @@ public class TornipuolustusTest {
     }
 
     @Test
+    public void torniaTorniinTaiTuhottuaTuhotaan() {
+        rakennettava.rakennaTorni();
+        assertTrue(!rakennettava.rakennaTorni());
+        rakennettava.tuhoaTorni();
+        assertTrue(!rakennettava.tuhoaTorni());
+    }
+
+    @Test
     public void torniPiirtyy() {
         rakennettava.rakennaTorni();
         assertEquals(rakennettava.toString(), "T");
@@ -126,16 +134,39 @@ public class TornipuolustusTest {
     }
 
     @Test
-    public void hirvioLoytaaSuunnan(){
-    ArrayList<Kuljettava> Kuljettavat = new ArrayList<>();
-    Kuljettavat.add(hirvionKeski);
-    Kuljettavat.add(hirvionOikea);
-    hirvio.liiku(Kuljettavat);
-    assertTrue(hirvio.getSijainti().equals(hirvionOikea.getSijainti()));
-}
-    
-    
+    public void hirvioLoytaaSuunnan() {
+        ArrayList<Kuljettava> Kuljettavat = new ArrayList<>();
+        Kuljettavat.add(hirvionKeski);
+        Kuljettavat.add(hirvionOikea);
+        hirvio.liiku(Kuljettavat);
+        assertTrue(hirvio.getSijainti().equals(hirvionOikea.getSijainti()));
+    }
 
+    @Test
+    public void hirvioLiikkuuOikein() {
+        ArrayList<Kuljettava> Kuljettavat = new ArrayList<>();
+        Kuljettavat.add(hirvionKeski);
+        Kuljettavat.add(hirvionAlas);
+        hirvio.liiku(Kuljettavat);
+        Kuljettavat.add(hirvionYlos);
+        hirvio.liiku(Kuljettavat);
+        hirvio.liiku(Kuljettavat);
+        assertTrue(hirvio.getSijainti().equals(hirvionYlos.getSijainti()));
+    }
+    
+    @Test
+    public void hirvioEiKohdallaJatkaaLiiketta() {
+        ArrayList<Kuljettava> Kuljettavat = new ArrayList<>();
+        Kuljettavat.add(hirvionKeski);
+        Kuljettavat.add(hirvionOikea);
+        hirvio.liiku(Kuljettavat);
+        Kuljettavat.add(hirvionVasen);
+        Kuljettavat.remove(hirvionKeski);
+        hirvio.liiku(Kuljettavat);
+        hirvio.liiku(Kuljettavat);
+        assertTrue(hirvio.getSijainti().equals(hirvionVasen.getSijainti()));
+    }
+    
     //HUOM! Seuraavia testejä muokattava
     @Test
     public void kentanTaytostaRuudukonAlkioidenMaaraKoonNelio() {
