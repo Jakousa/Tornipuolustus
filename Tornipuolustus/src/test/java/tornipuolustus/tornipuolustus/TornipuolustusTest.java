@@ -26,7 +26,7 @@ public class TornipuolustusTest {
     Kuljettava hirvionAlas = new Kuljettava(1, 2);
     Kuljettava hirvionOikea = new Kuljettava(2, 1);
     Kuljettava hirvionVasen = new Kuljettava(0, 1);
-
+    
     @Test
     public void kentanLuonnistaTyhjaRuudukko() {
         assertTrue(kentta.getRuudukko().isEmpty());
@@ -88,7 +88,66 @@ public class TornipuolustusTest {
         Collections.sort(kentta.getRakennettavat());
         assertEquals(kentta.getRakennettavat().get(0), b);
         assertEquals(kentta.getRakennettavat().get(1), a);
+    }
 
+    @Test
+    public void kenttaRakentelee() {
+        kentta.tayta();
+        Collections.sort(kentta.getRakennettavat());
+        kentta.rakennaTorni(0, 0);
+        assertEquals(kentta.getRakennettavat().get(0).toString(), "T");
+    }
+
+    @Test
+    public void kenttaRakentelee2() {
+        kentta.tayta();
+        Collections.sort(kentta.getRakennettavat());
+        kentta.rakennaTorni(0, 0);
+        assertTrue(!kentta.rakennaTorni(0, 0));
+    }
+
+    @Test
+    public void kenttaTuhoaaTornin() {
+        kentta.tayta();
+        kentta.rakennaTorni(0, 0);
+        assertTrue(kentta.poistaTorni(0, 0));
+    }
+
+    @Test
+    public void kenttaTuhoaaTornin2() {
+        kentta.tayta();
+        kentta.rakennaTorni(0, 0);
+        kentta.poistaTorni(0, 0);
+        assertTrue(!kentta.poistaTorni(0, 0));
+    }
+
+    @Test
+    public void kenttaLuoHirvion() {
+        kentta.tayta();
+        Collections.sort(kentta.getRuudukko());
+        kentta.lisaaHirvio(9);
+        boolean totta = false;
+        for (Kuljettava k : kentta.getKuljettavat()) {
+            if (k.getSijainti() == kentta.getHirviot().get(0).getSijainti()) {
+                totta = true;
+            }
+        }
+        assertTrue(totta);
+    }
+
+    @Test
+    public void kenttaLiikuttaa() {
+        kentta.tayta();
+        Collections.sort(kentta.getRuudukko());
+        kentta.lisaaHirvio(9);
+        Sijainti sijainti = null;
+        boolean totta = false;
+        int x = kentta.getHirviot().get(0).getSijainti().getX();
+        kentta.liikutaHirvioita();
+        if (kentta.getHirviot().get(0).getSijainti().getX() != x) {
+            totta = true;
+        }
+        assertTrue(totta);
     }
 
     @Test
@@ -100,6 +159,11 @@ public class TornipuolustusTest {
             asd = false;
         }
         assertTrue(asd);
+    }
+    
+    @Test
+    public void torniLisataan2() {
+        assertTrue(rakennettava.rakennaTorni());
     }
 
     @Test
@@ -129,8 +193,49 @@ public class TornipuolustusTest {
     }
 
     @Test
+    public void torniLoytaaKohteen() {
+        ArrayList<Hirvio> asd = new ArrayList<>();
+        Hirvio olio = new Hirvio(new Sijainti(1, 7), 9);
+        asd.add(olio);
+        rakennettava.rakennaTorni();
+        rakennettava.getTorni().etsiKohde(asd, rakennettava.getSijainti());
+        assertEquals(rakennettava.getTorni().getKohde(), olio);
+    }
+
+    @Test
+    public void torniAmpuu() {
+        ArrayList<Hirvio> asd = new ArrayList<>();
+        Hirvio olio = new Hirvio(new Sijainti(1, 7), 9);
+        asd.add(olio);
+        rakennettava.rakennaTorni();
+        rakennettava.getTorni().etsiKohde(asd, rakennettava.getSijainti());
+        int elama = olio.getElama();
+        elama -= rakennettava.getTorni().getVoima();
+        rakennettava.getTorni().ammu();
+        assertEquals(olio.getElama(), elama);
+    }
+
+    @Test
+    public void torniEiAmmuOlematonta() {
+        ArrayList<Hirvio> asd = new ArrayList<>();
+        Hirvio olio = new Hirvio(new Sijainti(1, 7), 9);
+        asd.add(olio);
+        rakennettava.rakennaTorni();
+        int elama = olio.getElama();
+        rakennettava.getTorni().ammu();
+        assertEquals(olio.getElama(), elama);
+    }
+
+    @Test
     public void hirvionElamat() {
-        assertEquals(hirvio.getElama(), 9);
+        int elama = hirvio.getElama();
+        assertEquals(elama, 9);
+    }
+
+    @Test
+    public void hirvionElamat2() {
+        hirvio.setElama(8);
+        assertEquals(hirvio.getElama(), 8);
     }
 
     @Test
@@ -140,6 +245,34 @@ public class TornipuolustusTest {
         Kuljettavat.add(hirvionOikea);
         hirvio.liiku(Kuljettavat);
         assertTrue(hirvio.getSijainti().equals(hirvionOikea.getSijainti()));
+    }
+
+    @Test
+    public void hirvioValitseeOikein() {
+        ArrayList<Kuljettava> Kuljettavat = new ArrayList<>();
+        Kuljettava Oikeampi = new Kuljettava(3, 1);
+        Kuljettavat.add(Oikeampi);
+        Kuljettavat.add(hirvionKeski);
+        Kuljettavat.add(hirvionOikea);
+        hirvio.liiku(Kuljettavat);
+        hirvio.liiku(Kuljettavat);
+        assertTrue(hirvio.getSijainti().equals(Oikeampi.getSijainti()));
+
+    }
+
+    @Test
+    public void hirviolleAnnetaanSuunta() {
+        hirvio.setSuunta(0);
+        assertEquals(hirvio.getSuunta(), 0);
+    }
+
+    @Test
+    public void hirvioLoytaaSuunnan2() {
+        ArrayList<Kuljettava> Kuljettavat = new ArrayList<>();
+        Kuljettavat.add(hirvionKeski);
+        Kuljettavat.add(hirvionVasen);
+        hirvio.liiku(Kuljettavat);
+        assertTrue(hirvio.getSijainti().equals(hirvionVasen.getSijainti()));
     }
 
     @Test
@@ -153,7 +286,7 @@ public class TornipuolustusTest {
         hirvio.liiku(Kuljettavat);
         assertTrue(hirvio.getSijainti().equals(hirvionYlos.getSijainti()));
     }
-    
+
     @Test
     public void hirvioEiKohdallaJatkaaLiiketta() {
         ArrayList<Kuljettava> Kuljettavat = new ArrayList<>();
@@ -166,12 +299,34 @@ public class TornipuolustusTest {
         hirvio.liiku(Kuljettavat);
         assertTrue(hirvio.getSijainti().equals(hirvionVasen.getSijainti()));
     }
-    
+
     //HUOM! Seuraavia testejä muokattava
     @Test
     public void kentanTaytostaRuudukonAlkioidenMaaraKoonNelio() {
         kentta.tayta();
         assertEquals(kentta.getRuudukko().size(), 100);
+    }
+    
+    @Test
+    public void tornitAmpuvatKentalta() {
+        kentta.tayta();
+        for (Rakennettava rakennettava1 : kentta.getRakennettavat()) {
+            if (rakennettava1.getSijainti().getX() == 3 || rakennettava1.getSijainti().getX() == 4) {
+                rakennettava1.rakennaTorni();
+            }
+        }
+        kentta.lisaaHirvio(3);
+        kentta.liikutaHirvioita();
+        kentta.lisaaHirvio(3);
+        for (int i = 0; i < 10; i++) {
+            kentta.liikutaHirvioita();            
+            kentta.tornitAmpuvat();
+        }
+        boolean kaikkikuolleet = true;
+        if (!kentta.getHirviot().isEmpty()) {
+            kaikkikuolleet = false;
+        }
+        assertTrue(kaikkikuolleet);
     }
 
     @Test

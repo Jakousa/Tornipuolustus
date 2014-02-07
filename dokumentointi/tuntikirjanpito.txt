@@ -5,3 +5,6 @@
 30.1.2014 6h Hirviot ja tornit olemaan
 1.2.2014 4h Hirviot kentälle liikkumaan
 2.2.2014 1h Testejä
+5.2.2014 2h Testejä
+6.2.2014 3h Testejä (palautus) - Logiikka valmis?
+7.2.2014 2h Testejä; coberturan (rivikattavuus) osalta ~90% valmiit lukuunottamatta käyttöliittymää. pitin mukaan mutaatiokattavuus ~80%

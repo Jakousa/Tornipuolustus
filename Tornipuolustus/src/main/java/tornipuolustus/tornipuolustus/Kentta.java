@@ -26,7 +26,13 @@ public class Kentta {
         ruudukko.addAll(rakennettavat);
         return ruudukko;
     }
+    
+    
+    public List<Hirvio> getHirviot() {
+        return hirviot;
+    }
 
+    
     public List<Kuljettava> getKuljettavat() {
         return kuljettavat;
     }

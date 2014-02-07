@@ -21,6 +21,14 @@ public class Torni {
             kohde.setElama(kohde.getElama() - voima);
         }
     }
+    
+    public int getVoima() {
+        return voima;
+    }
+    
+    public Hirvio getKohde() {
+        return kohde;
+    }
 
     public void etsiKohde(List<Hirvio> hirvoista, Sijainti sijainti) {
         Hirvio lahin = null;

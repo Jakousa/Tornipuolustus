@@ -46,10 +46,12 @@
                     <targetClasses>
                         <param>tornipuolustus.ruudut*</param>
                         <param>tornipuolustus.tornipuolustus*</param>
+			<param>tornipuolustus.toimijat*</param>
                     </targetClasses>
                     <targetTests>
                         <param>tornipuolustus.ruudut*</param>
                         <param>tornipuolustus.tornipuolustus*</param>
+			<param>tornipuolustus.toimijat*</param>
                     </targetTests>
                     <verbose>true</verbose>
                 </configuration>
