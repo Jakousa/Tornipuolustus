@@ -4,12 +4,6 @@
  */
 package tornipuolustus.ruudut;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import tornipuolustus.toimijat.Hirvio;
@@ -17,10 +11,6 @@ import tornipuolustus.toimijat.Torni;
 import tornipuolustus.tornipuolustus.Kentta;
 import tornipuolustus.tornipuolustus.Sijainti;
 
-/**
- *
- * @author Hatchy
- */
 public class RakennettavaTest {
     
 

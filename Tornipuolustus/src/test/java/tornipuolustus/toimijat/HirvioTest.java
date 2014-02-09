@@ -5,16 +5,9 @@
 package tornipuolustus.toimijat;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import tornipuolustus.ruudut.Kuljettava;
-import tornipuolustus.ruudut.Rakennettava;
-import tornipuolustus.tornipuolustus.Kentta;
 import tornipuolustus.tornipuolustus.Sijainti;
 
 /**
@@ -24,9 +17,6 @@ import tornipuolustus.tornipuolustus.Sijainti;
 public class HirvioTest {
     
 
-    Kentta kentta = new Kentta(10);
-    Rakennettava rakennettava = new Rakennettava(1, 8);
-    Kuljettava kuljettava = new Kuljettava(0, 8);
     Hirvio hirvio = new Hirvio(new Sijainti(1, 1), 9);
     Kuljettava hirvionYlos = new Kuljettava(1, 0);
     Kuljettava hirvionKeski = new Kuljettava(1, 1);
@@ -107,9 +97,4 @@ public class HirvioTest {
         hirvio.liiku(Kuljettavat);
         assertTrue(hirvio.getSijainti().equals(hirvionVasen.getSijainti()));
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }
