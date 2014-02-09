@@ -4,12 +4,11 @@
  */
 package tornipuolustus.toimijat;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import tornipuolustus.ruudut.Rakennettava;
+import tornipuolustus.tornipuolustus.Sijainti;
 
 /**
  *
@@ -17,27 +16,45 @@ import static org.junit.Assert.*;
  */
 public class TorniTest {
     
-    public TorniTest() {
+    Rakennettava rakennettava = new Rakennettava(1, 8);
+
+    @Test
+    public void torniPiirtyy() {
+        rakennettava.rakennaTorni();
+        assertEquals(rakennettava.toString(), "T");
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
+
+    @Test
+    public void torniLoytaaKohteen() {
+        ArrayList<Hirvio> asd = new ArrayList<>();
+        Hirvio olio = new Hirvio(new Sijainti(1, 7), 9);
+        asd.add(olio);
+        rakennettava.rakennaTorni();
+        rakennettava.getTorni().etsiKohde(asd, rakennettava.getSijainti());
+        assertEquals(rakennettava.getTorni().getKohde(), olio);
     }
-    
-    @AfterClass
-    public static void tearDownClass() {
+
+    @Test
+    public void torniAmpuu() {
+        ArrayList<Hirvio> asd = new ArrayList<>();
+        Hirvio olio = new Hirvio(new Sijainti(1, 7), 9);
+        asd.add(olio);
+        rakennettava.rakennaTorni();
+        rakennettava.getTorni().etsiKohde(asd, rakennettava.getSijainti());
+        int elama = olio.getElama();
+        elama -= rakennettava.getTorni().getVoima();
+        rakennettava.getTorni().ammu();
+        assertEquals(olio.getElama(), elama);
     }
-    
-    @Before
-    public void setUp() {
+
+    @Test
+    public void torniEiAmmuOlematonta() {
+        ArrayList<Hirvio> asd = new ArrayList<>();
+        Hirvio olio = new Hirvio(new Sijainti(1, 7), 9);
+        asd.add(olio);
+        rakennettava.rakennaTorni();
+        int elama = olio.getElama();
+        rakennettava.getTorni().ammu();
+        assertEquals(olio.getElama(), elama);
     }
-    
-    @After
-    public void tearDown() {
-    }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }

@@ -4,40 +4,76 @@
  */
 package tornipuolustus.tornipuolustus;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import java.util.Collections;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import tornipuolustus.ruudut.Kuljettava;
 
 /**
  *
  * @author Hatchy
  */
 public class KenttaTest {
-    
-    public KenttaTest() {
+
+    Kentta kentta = new Kentta(10);
+
+    @Test
+    public void kenttaRakentelee() {
+        kentta.tayta();
+        Collections.sort(kentta.getRakennettavat());
+        kentta.rakennaTorni(0, 0);
+        assertEquals(kentta.getRakennettavat().get(0).toString(), "T");
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
+
+    @Test
+    public void kenttaRakentelee2() {
+        kentta.tayta();
+        Collections.sort(kentta.getRakennettavat());
+        kentta.rakennaTorni(0, 0);
+        assertTrue(!kentta.rakennaTorni(0, 0));
     }
-    
-    @AfterClass
-    public static void tearDownClass() {
+
+    @Test
+    public void kenttaTuhoaaTornin() {
+        kentta.tayta();
+        kentta.rakennaTorni(0, 0);
+        assertTrue(kentta.poistaTorni(0, 0));
     }
-    
-    @Before
-    public void setUp() {
+
+    @Test
+    public void kenttaTuhoaaTornin2() {
+        kentta.tayta();
+        kentta.rakennaTorni(0, 0);
+        kentta.poistaTorni(0, 0);
+        assertTrue(!kentta.poistaTorni(0, 0));
     }
-    
-    @After
-    public void tearDown() {
+
+    @Test
+    public void kenttaLuoHirvion() {
+        kentta.tayta();
+        Collections.sort(kentta.getRuudukko());
+        kentta.lisaaHirvio(9);
+        boolean totta = false;
+        for (Kuljettava k : kentta.getKuljettavat()) {
+            if (k.getSijainti() == kentta.getHirviot().get(0).getSijainti()) {
+                totta = true;
+            }
+        }
+        assertTrue(totta);
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+
+    @Test
+    public void kenttaLiikuttaa() {
+        kentta.tayta();
+        Collections.sort(kentta.getRuudukko());
+        kentta.lisaaHirvio(9);
+        Sijainti sijainti = null;
+        boolean totta = false;
+        int x = kentta.getHirviot().get(0).getSijainti().getX();
+        kentta.liikutaHirvioita();
+        if (kentta.getHirviot().get(0).getSijainti().getX() != x) {
+            totta = true;
+        }
+        assertTrue(totta);
+    }
 }
