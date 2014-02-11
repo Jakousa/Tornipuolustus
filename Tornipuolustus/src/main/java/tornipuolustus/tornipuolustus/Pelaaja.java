@@ -5,6 +5,15 @@ public class Pelaaja {
     private int rahat;
     private int pisteet;
     private int elama;
+    private Sijainti kursori;
+    
+    public Pelaaja() {
+        kursori = new Sijainti(0,0);
+    }
+    
+    public Sijainti getKursori(){
+        return kursori;
+    }
 
     public int getRahat() {
         return rahat;

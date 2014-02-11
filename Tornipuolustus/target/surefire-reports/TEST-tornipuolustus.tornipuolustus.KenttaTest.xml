@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.001" errors="0" skipped="0" tests="6" name="tornipuolustus.tornipuolustus.KenttaTest">
+<testsuite failures="0" time="0.002" errors="0" skipped="0" tests="6" name="tornipuolustus.tornipuolustus.KenttaTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.7.0_25\jre\bin"/>
@@ -60,10 +60,10 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase time="0.001" classname="tornipuolustus.tornipuolustus.KenttaTest" name="kenttaRakentelee"/>
+  <testcase time="0" classname="tornipuolustus.tornipuolustus.KenttaTest" name="kenttaRakentelee"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.KenttaTest" name="kenttaRakentelee2"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.KenttaTest" name="kenttaTuhoaaTornin"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.KenttaTest" name="kenttaTuhoaaTornin2"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.KenttaTest" name="kenttaLuoHirvion"/>
-  <testcase time="0" classname="tornipuolustus.tornipuolustus.KenttaTest" name="kenttaLiikuttaa"/>
+  <testcase time="0.002" classname="tornipuolustus.tornipuolustus.KenttaTest" name="kenttaLiikuttaa"/>
 </testsuite>

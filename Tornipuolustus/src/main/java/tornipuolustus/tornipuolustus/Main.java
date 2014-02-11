@@ -22,6 +22,6 @@ public class Main {
 
         tornipuolustus.setAlusta(kali.getAlusta());
 
-        tornipuolustus.start();
+        tornipuolustus.pelaa();
     }
 }

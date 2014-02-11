@@ -38,12 +38,16 @@ public class Piirtoalusta extends JPanel  {
         }
         g.setColor(Color.white);
         for (Kuljettava k : tornipuolustus.getKentta().getKuljettavat()) {
-            g.fill3DRect(k.getSijainti().getX()*palanleveys, k.getSijainti().getY()*palanleveys, palanleveys, palanleveys, true);;
+            g.fill3DRect(k.getSijainti().getX()*palanleveys, k.getSijainti().getY()*palanleveys, palanleveys, palanleveys, false);;
         }
         g.setColor(Color.red);
         for (Hirvio hirvio : tornipuolustus.getKentta().getHirviot()) {
             g.fillOval(hirvio.getSijainti().getX()*palanleveys, hirvio.getSijainti().getY()*palanleveys, palanleveys, palanleveys);
         }
+        g.setColor(Color.GREEN);
+        g.fill3DRect(tornipuolustus.getPelaaja().getKursori().getX()*palanleveys, 
+                tornipuolustus.getPelaaja().getKursori().getY()*palanleveys, 
+                palanleveys, palanleveys, true);
     }
 
     public void paivita() {

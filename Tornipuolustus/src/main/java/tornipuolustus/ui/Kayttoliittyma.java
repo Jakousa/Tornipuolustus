@@ -44,7 +44,7 @@ public class Kayttoliittyma implements Runnable {
     public void luoKomponentit(Container container) {
         alusta = new Piirtoalusta(tornipuolustus, sivunPituus);
         container.add(alusta);
-        //frame.addKeyListener(new Nappaimistonkuuntelija(tornipuolustus.getPelaaja()));
+        frame.addKeyListener(new Nappaimistonkuuntelija(tornipuolustus.getPelaaja(), tornipuolustus));
     }
 
     public JFrame getFrame() {
