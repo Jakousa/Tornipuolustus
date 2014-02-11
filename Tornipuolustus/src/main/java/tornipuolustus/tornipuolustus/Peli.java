@@ -1,6 +1,7 @@
 package tornipuolustus.tornipuolustus;
 
 import java.util.Scanner;
+import tornipuolustus.ui.Piirtoalusta;
 
 public class Peli {
 
@@ -10,6 +11,7 @@ public class Peli {
     private Pelaaja pelaaja;
     private int vaikeus;
     private int torninHinta = 200;
+    private Piirtoalusta piirtoalusta;
 
     public Peli(Scanner lukija) {
         kentta = new Kentta(10);
@@ -17,9 +19,17 @@ public class Peli {
         this.lukija = lukija;
         pelaaja = new Pelaaja();
     }
+    
+    public Pelaaja getPelaaja() {
+        return pelaaja;
+    }
 
     public Kentta getKentta() {
         return kentta;
+    }
+    
+    public void setAlusta(Piirtoalusta alusta) {
+        piirtoalusta = alusta;
     }
 
     /**
@@ -28,7 +38,6 @@ public class Peli {
     public void asetaVaikeustaso() {
         System.out.println("Valitse vaikeustaso: H helppo, K keskitaso, V vaikea");
         String vaikeustaso = lukija.nextLine();
-
         if (vaikeustaso.equals("V")) {
             this.vaikeus = 3;
         } else if (vaikeustaso.equals("K")) {
@@ -51,12 +60,12 @@ public class Peli {
     public void start() {
         asetaVaikeustaso();
 
-
         kentta.tayta();
         int kierrosnumero = 1;
         while (jatkuu) {
             kentta.piirra();
-
+            piirtoalusta.paivita();
+            
             System.out.println("Lisää torni: 1 / Jyrää torni: 2 / Aloita: 3 / Poistu: 0");
             System.out.println("Rakennushinta: " + this.torninHinta + "     Rahasi: " + pelaaja.getRahat());
             int valinta = Integer.parseInt(lukija.nextLine());
@@ -116,13 +125,14 @@ public class Peli {
      * Pelin toiminta
      */
     private void peliPaalle(int kierrosnumero) {
-        for (int i = 0; i < 30 + kierrosnumero * 6; i++) {
-            if (i % 3 == 0 && i < kierrosnumero * 6) {
+        for (int i = 0; i < kierrosnumero * 6; i++) {
+            if (i % 3 == 0 && i < 15 + kierrosnumero * 6) {
                 kentta.lisaaHirvio(4 * kierrosnumero * this.vaikeus);
             }
 
             kentta.liikutaHirvioita();
 
+            piirtoalusta.paivita();
             kentta.piirra();
             int osumista = kentta.tornitAmpuvat();
             pelaaja.tienaa(osumista);
