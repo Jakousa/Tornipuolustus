@@ -18,6 +18,13 @@ public abstract class Ruutu implements Comparable<Ruutu> {
         return sijainti;
     }
 
+    
+    /**
+     * Vertailee vain sijainteja, riippumatta sisällöstä
+     * 
+     * @param r Kuljettava tai Rakennettava
+     * @return sijainnin compareto arvon
+     */
     @Override
     public int compareTo(Ruutu r) {
         return this.sijainti.compareTo(r.getSijainti());

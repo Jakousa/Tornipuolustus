@@ -1,10 +1,6 @@
 package tornipuolustus.tornipuolustus;
 
-import java.util.ArrayList;
 import java.util.Scanner;
-import tornipuolustus.ruudut.Kuljettava;
-import tornipuolustus.ruudut.Rakennettava;
-import tornipuolustus.toimijat.Hirvio;
 
 public class Main {
 

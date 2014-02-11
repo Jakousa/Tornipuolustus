@@ -15,17 +15,25 @@ public class Hirvio {
     private Sijainti sijainti;
     private Sijainti edellinen;
     private int elama;
+    private int nopeus;
 
     public Hirvio(Sijainti sijainti, int elama) {
         this.sijainti = sijainti;
         this.elama = elama;
         this.edellinen = sijainti;
+        this.nopeus = 1;
     }
 
     public int getElama() {
         return elama;
     }
 
+    /**
+     * Asettaa suunnan uuteen sijaintiin 
+     * suhteessa alkuperäiseen sijaintiin.
+     * 
+     * @param minne 
+     */
     public void teeSuunta(Sijainti minne) {
         int y = minne.getY() - sijainti.getY();
         int x = minne.getX() - sijainti.getX();
@@ -39,8 +47,14 @@ public class Hirvio {
             suunta = 4;
         }
     }
-
-    public void etsiPaamaara(List<Kuljettava> kuljettavat) { //Hyhhyh että on rumaa
+    
+    /**
+     * Vertaa mahdollisia ympäröiviä ruutuja 
+     * ja kutsuu teeSuunta metodia sijainnilla, jossa ei viimeksi oltu
+     * 
+     * @param kuljettavat 
+     */
+    public void etsiPaamaara(List<Kuljettava> kuljettavat) {
         boolean syyta = false;
         for (Kuljettava kuljettava : kuljettavat) {
             if (kuljettava.getSijainti().equals(sijainti)) {
@@ -99,18 +113,24 @@ public class Hirvio {
     public int getSuunta() {
         return suunta;
     }
-
+    
+    /**
+     * kutsuu etsiPaamaara metodia, joka muuttaa suuntaa
+     * tämän jälkeen tallettaa vanhan sijainnin ja liikkuu eteenpäin
+     * 
+     * @param kuljettavat 
+     */
     public void liiku(List<Kuljettava> kuljettavat) {
         etsiPaamaara(kuljettavat);
         edellinen = sijainti;
         if (suunta == 1) {
-            this.sijainti = new Sijainti(sijainti.getX(), sijainti.getY() - 1);
+            this.sijainti = new Sijainti(sijainti.getX(), sijainti.getY() - this.nopeus);
         } else if (suunta == 2) {
-            this.sijainti = new Sijainti(sijainti.getX() + 1, sijainti.getY());
+            this.sijainti = new Sijainti(sijainti.getX() + this.nopeus, sijainti.getY());
         } else if (suunta == 3) {
-            this.sijainti = new Sijainti(sijainti.getX(), sijainti.getY() + 1);
+            this.sijainti = new Sijainti(sijainti.getX(), sijainti.getY() + this.nopeus);
         } else {
-            this.sijainti = new Sijainti(sijainti.getX() - 1, sijainti.getY());
+            this.sijainti = new Sijainti(sijainti.getX() - this.nopeus, sijainti.getY());
         }
     }
 }

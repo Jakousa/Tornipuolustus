@@ -16,9 +16,16 @@ public class Torni {
         this.voima = 1;
     }
 
-    public void ammu() {
+    /**
+     * Vähentää kohteen (Hirviön) elämää.
+     * Kentän vastuulla poistaa kuolleet.
+     */
+    public boolean ammu() {
         if (kohde != null) {
             kohde.setElama(kohde.getElama() - voima);
+            return true;
+        } else {
+            return false;
         }
     }
     
@@ -30,6 +37,15 @@ public class Torni {
         return kohde;
     }
 
+    
+    /**
+     * Etsii annetuista hirviöistä lähimmän vertaamalla omaa sijaintiaan
+     * hirviöiden sijaintiin ja tallettaa kohteeseen lähimmän. 
+     * Mikäli mahdollisia kohteita on useita valitsee viimeisimmän.
+     * 
+     * @param hirvoista Lista ammuttavista hirviöistä
+     * @param sijainti Oma sijainti (Rakennettavan sijainti)
+     */
     public void etsiKohde(List<Hirvio> hirvoista, Sijainti sijainti) {
         Hirvio lahin = null;
         double etaisyys = 10;
@@ -42,7 +58,7 @@ public class Torni {
                 etaisyys = lahin.getSijainti().etaisyys(sijainti);
             }
         }
-        if (etaisyys < 3) {
+        if (etaisyys < 4 || lahin == null) {
             kohde = lahin;
         }
     }
