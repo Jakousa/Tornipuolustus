@@ -140,7 +140,6 @@ public class Kentta {
                 h.liiku(kuljettavat);
             }
         }
-        poistettavat.size();
         hirviot.removeAll(poistettavat);
     }
 
