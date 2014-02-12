@@ -51,6 +51,9 @@ public class Nappaimistonkuuntelija implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_X) {
             peli.jyraa(pelaaja.getKursori().getX(), pelaaja.getKursori().getY());
         }
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+            peli.lopetaVuoro();
+        }
     }
 
     @Override

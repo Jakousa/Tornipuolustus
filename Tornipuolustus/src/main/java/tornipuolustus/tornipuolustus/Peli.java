@@ -6,7 +6,7 @@ import java.util.Scanner;
 import javax.swing.Timer;
 import tornipuolustus.ui.Piirtoalusta;
 
-public class Peli extends Timer implements ActionListener{
+public class Peli extends Timer implements ActionListener {
 
     private Kentta kentta;
     private Scanner lukija;
@@ -24,11 +24,11 @@ public class Peli extends Timer implements ActionListener{
         omaVuoro = true;
         this.lukija = lukija;
         pelaaja = new Pelaaja();
-        
+
         addActionListener(this);
         setInitialDelay(500);
     }
-    
+
     public Pelaaja getPelaaja() {
         return pelaaja;
     }
@@ -36,13 +36,13 @@ public class Peli extends Timer implements ActionListener{
     public Kentta getKentta() {
         return kentta;
     }
-    
+
     public void setAlusta(Piirtoalusta alusta) {
         piirtoalusta = alusta;
     }
 
     /**
-     * asetetaan vaikeustaso pelille
+     * asetetaan vaikeustaso pelille ja kutsuu pelaajaluokkaa
      */
     public void asetaVaikeustaso() {
         System.out.println("Valitse vaikeustaso: H helppo, K keskitaso, V vaikea");
@@ -53,7 +53,7 @@ public class Peli extends Timer implements ActionListener{
             this.vaikeus = 2;
         } else {
             if (!vaikeustaso.equalsIgnoreCase("H")) {
-                System.out.println("Teksikäyttöliittymä too oldschool");
+                System.out.println("Valintaa ei tunnistettu, improvisoidaan:");
             }
             System.out.println("Valitsit helpon vaikeustason");
             this.vaikeus = 1;
@@ -62,102 +62,79 @@ public class Peli extends Timer implements ActionListener{
         pelaaja.aloitusElama(vaikeus);
         pelaaja.aloitusRahat(vaikeus);
     }
-    
+
+    /**
+     * asettaa (pelaajan) omanvuoron arvoksi false
+     */
     public void lopetaVuoro() {
         omaVuoro = false;
+    }
+    
+
+    /**
+     * Tulostaa pelin kannalta hyödyllistä informaatiota pelaajan nähtäville.
+     */
+    public void tilanne() {
+        System.out.println("Rakennushinta: " + this.torninHinta + "     Rahasi: " + pelaaja.getRahat());
+        System.out.println("Lisää torni: Z / Jyrää torni: X / Aloita: ENTER");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         piirtoalusta.paivita();
-        if (pelaaja.getRahat() < this.torninHinta) {
-            omaVuoro = false;
-        }
     }
-        
+
+    /**
+     * Pelaajan vuoro tapahtuu tässä metodissa.
+     */
     public void pelaa() {
         asetaVaikeustaso();
         this.start();
         kentta.tayta();
         int kierrosnumero = 1;
-        
-        while (jatkuu) {
-            //kentta.piirra();
-            piirtoalusta.paivita();
-            
-            //this.start();
-            
-           // System.out.println("Lisää torni: 1 / Jyrää torni: 2 / Aloita: 3 / Poistu: 0");
-           // System.out.println("Rakennushinta: " + this.torninHinta + "     Rahasi: " + pelaaja.getRahat());
-           // int valinta = Integer.parseInt(lukija.nextLine());
+        tilanne();
 
-           // if (valinta == 0) {
-//                break;
-//            }
-//            if (valinta == 1) {
-//                tornia();
-//            }
-//            if (valinta == 2) {
-//                jyraa();
-//            }
+        while (jatkuu) {
+            piirtoalusta.paivita();
             if (!omaVuoro) {
                 peliPaalle(kierrosnumero);
                 kierrosnumero++;
-                System.out.println("Rakennushinta: " + this.torninHinta + "     Rahasi: " + pelaaja.getRahat());
+                tilanne();
+                omaVuoro = true;
             }
         }
         System.out.println("Peli päättyi");
     }
 
-    public void tornia() {
-        System.out.println("x koordinaatti: ");
-        int x = Integer.parseInt(lukija.nextLine());
-        System.out.println("y koordinaatti: ");
-        int y = Integer.parseInt(lukija.nextLine());
-        
-        boolean onnistui = false;
-        if (pelaaja.getRahat() - this.torninHinta >= 0) {
-            if (kentta.rakennaTorni(x, y)) {
-                onnistui = true;
-            } 
-        } 
-        
-        if (onnistui) {
-            pelaaja.rakenna(this.torninHinta);
-            System.out.println("Rakennus onnistui");
-        } else {
-            System.out.println("Rakennus epäonnistui");
-        }
-    }
-    
+    /**
+     * Metodi tarkistaa riittääkö pelaajan rahat rakentamiseen ja mikäli tämä
+     * onnistuu pyytää metodi kenttää rakentamaan tornin sijaintiin
+     *
+     * @param x haluttu tornin sijainti x
+     * @param y haluttu tornin sijainti y
+     */
     public void tornia(int x, int y) {
         boolean onnistui = false;
         if (pelaaja.getRahat() - this.torninHinta >= 0) {
             if (kentta.rakennaTorni(x, y)) {
                 onnistui = true;
-            } 
-        } 
+            }
+        }
         if (onnistui) {
             pelaaja.rakenna(this.torninHinta);
             System.out.println("Rakennus onnistui");
         } else {
             System.out.println("Rakennus epäonnistui");
         }
+        tilanne();
     }
 
-    public void jyraa() {
-        System.out.println("x koordinaatti: ");
-        int x = Integer.parseInt(lukija.nextLine());
-        System.out.println("y koordinaatti: ");
-        int y = Integer.parseInt(lukija.nextLine());
-        if (kentta.poistaTorni(x, y)) {
-            System.out.println("Purku onnistui");
-            pelaaja.tuhoaTorni(this.torninHinta);
-        } else {
-            System.out.println("Purku epäonnistui");
-        }
-    }
-    
+    /**
+     * Metodi poistaa tornin ja lisää sen mukaisesti pelaajan rahoihin
+     *
+     * @param x haluttu purkutapahtuman sijainti x
+     * @param y haluttu purkutapahtuman sijainti y
+     */
     public void jyraa(int x, int y) {
         if (kentta.poistaTorni(x, y)) {
             System.out.println("Purku onnistui");
@@ -165,10 +142,11 @@ public class Peli extends Timer implements ActionListener{
         } else {
             System.out.println("Purku epäonnistui");
         }
+        tilanne();
     }
 
     /**
-     * Pelin toiminta
+     * Pelin toiminta, kun pelaaja on lopettanut vuoronsa
      */
     private void peliPaalle(int kierrosnumero) {
         omaVuoro = true;
@@ -183,7 +161,7 @@ public class Peli extends Timer implements ActionListener{
             kentta.piirra();
             int osumista = kentta.tornitAmpuvat();
             pelaaja.tienaa(osumista);
-            
+
             if (kentta.paasikoLapi()) {
                 pelaaja.otaOsumaa();
             }
@@ -200,6 +178,4 @@ public class Peli extends Timer implements ActionListener{
             }
         }
     }
-
-
 }
