@@ -1,0 +1,5 @@
+Aihe: tornipuolustuspeli
+Käyttäjien toiminnot:
+Laitetaan torneja pelikentälle, poistetaan torneja, annetaan vihollisille lupa hyökätä.
+
+Tavoitteena, että viholliset eivät ylitä pelikenttää rakentamalla torneja jotka vähentävät niiden elämäpisteitä.

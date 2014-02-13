@@ -1,12 +1,13 @@
-14.1.2014 1h gitHubia ja aloitusluento
-22.1.2014 2h luokkakaavio paperilla ja "pelikentän" valmistelua 
-23.1.2014 4h Testejä deadlinea varten, luokkakaavio siistiksi.
-29.1.2014 2h Kenttä valmis
-30.1.2014 6h Hirviot ja tornit olemaan
-1.2.2014 4h Hirviot kentälle liikkumaan
-2.2.2014 1h Testejä
-5.2.2014 2h Testejä
-6.2.2014 3h Testejä (palautus) - Logiikka valmis?
-7.2.2014 2h Testejä; coberturan (rivikattavuus) osalta ~90% valmiit lukuunottamatta käyttöliittymää. pitin mukaan mutaatiokattavuus ~80%
-8.2.2014 1h Testien järjestelyä.
-11.2.2014 6h Pelaaja, JavaDoc(?) ja kauan harkitun graafisen käyttöliittymän aloitus
+14.1.2014 	1h 	gitHubia ja aloitusluento
+22.1.2014 	2h 	luokkakaavio paperilla ja "pelikentän" valmistelua 
+23.1.2014 	4h 	Testejä deadlinea varten, luokkakaavio siistiksi.
+29.1.2014 	2h 	Kenttä valmis
+30.1.2014 	6h 	Hirviot ja tornit olemaan
+1.2.2014 	4h 	Hirviot kentälle liikkumaan
+2.2.2014 	1h 	Testejä
+5.2.2014 	2h 	Testejä
+6.2.2014 	3h 	Testejä (palautus) - Logiikka valmis?
+7.2.2014 	2h 	Testejä; coberturan (rivikattavuus) osalta ~90% valmiit lukuunottamatta käyttöliittymää. pitin mukaan 			mutaatiokattavuus ~80%
+8.2.2014 	1h 	Testien järjestelyä.
+11.2.2014 	6h 	Pelaaja, jotakin luokkia editoitiin pelillisten ominaisuuksien vuoksi. JavaDoc(?) ja kauan harkitun graafisen 			käyttöliittymän aloitus, sekvenssikaavioita myös viimeviikolta.
+13.2.2014 	5h 	JavaDocin luominen epäonnistuu jatkuvista yrityksistä huolimatta. Testejä. Rivikattavuus ~90%. mutaatiot samaa 			luokkaa lukuunottamatta muutamaa Peli-luokan piirtokomentoa jotka korvataan graafisen käyttöliittymän versioilla.

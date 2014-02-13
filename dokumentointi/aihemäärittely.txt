@@ -1,6 +1,0 @@
-Aihe: tornipuolustuspeli
-Käyttäjien toiminnot:
-Laitetaan erityyppisiä torneja pelikentälle.
-
-
-Tavoitteena, että hirviöt eivät ylitä pelikenttää.
