@@ -33,6 +33,18 @@ public class TorniTest {
         rakennettava.getTorni().etsiKohde(asd, rakennettava.getSijainti());
         assertEquals(rakennettava.getTorni().getKohde(), olio);
     }
+    
+    @Test
+    public void torniValitseeLahemman() {
+        ArrayList<Hirvio> hirviot = new ArrayList<>();
+        Hirvio lahempi = new Hirvio(new Sijainti(2,8), 9);
+        Hirvio kauempi = new Hirvio(new Sijainti(0,0), 9);
+        hirviot.add(kauempi);
+        hirviot.add(lahempi);
+        rakennettava.rakennaTorni();
+        rakennettava.getTorni().etsiKohde(hirviot, rakennettava.getSijainti());
+        assertEquals(rakennettava.getTorni().getKohde(), lahempi);
+    }
 
     @Test
     public void torniAmpuu() {

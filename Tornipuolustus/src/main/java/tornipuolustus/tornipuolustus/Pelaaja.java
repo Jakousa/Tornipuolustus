@@ -44,7 +44,7 @@ public class Pelaaja {
     }
 
     public void tienaa(int osumista) {
-        this.rahat += osumista * 7;
+        this.rahat += osumista * 9;
         this.pisteet += osumista * 17;
     }
     

@@ -64,7 +64,7 @@
   <testcase time="0" classname="tornipuolustus.toimijat.HirvioTest" name="hirvionElamat"/>
   <testcase time="0" classname="tornipuolustus.toimijat.HirvioTest" name="hirvionElamat2"/>
   <testcase time="0" classname="tornipuolustus.toimijat.HirvioTest" name="hirvioLoytaaSuunnan"/>
-  <testcase time="0" classname="tornipuolustus.toimijat.HirvioTest" name="hirvioValitseeOikein"/>
+  <testcase time="0.001" classname="tornipuolustus.toimijat.HirvioTest" name="hirvioValitseeOikein"/>
   <testcase time="0" classname="tornipuolustus.toimijat.HirvioTest" name="hirviolleAnnetaanSuunta"/>
   <testcase time="0" classname="tornipuolustus.toimijat.HirvioTest" name="hirvioLoytaaSuunnan2"/>
   <testcase time="0" classname="tornipuolustus.toimijat.HirvioTest" name="hirvioLiikkuuOikein"/>

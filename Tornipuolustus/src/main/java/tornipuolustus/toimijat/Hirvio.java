@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package tornipuolustus.toimijat;
 
 import java.util.ArrayList;
@@ -29,10 +25,9 @@ public class Hirvio {
     }
 
     /**
-     * Asettaa suunnan uuteen sijaintiin 
-     * suhteessa alkuperäiseen sijaintiin.
-     * 
-     * @param minne 
+     * Asettaa suunnan uuteen sijaintiin suhteessa alkuperäiseen sijaintiin.
+     *
+     * @param minne
      */
     public void teeSuunta(Sijainti minne) {
         int y = minne.getY() - sijainti.getY();
@@ -47,12 +42,12 @@ public class Hirvio {
             suunta = 4;
         }
     }
-    
+
     /**
-     * Vertaa mahdollisia ympäröiviä ruutuja 
-     * ja kutsuu teeSuunta metodia sijainnilla, jossa ei viimeksi oltu
-     * 
-     * @param kuljettavat 
+     * Vertaa mahdollisia ympäröiviä ruutuja ja kutsuu teeSuunta metodia
+     * sijainnilla, jossa ei viimeksi oltu
+     *
+     * @param kuljettavat
      */
     public void etsiPaamaara(List<Kuljettava> kuljettavat) {
         boolean syyta = false;
@@ -113,12 +108,12 @@ public class Hirvio {
     public int getSuunta() {
         return suunta;
     }
-    
+
     /**
-     * kutsuu etsiPaamaara metodia, joka muuttaa suuntaa
-     * tämän jälkeen tallettaa vanhan sijainnin ja liikkuu eteenpäin
-     * 
-     * @param kuljettavat 
+     * kutsuu etsiPaamaara metodia, joka muuttaa suuntaa tämän jälkeen tallettaa
+     * vanhan sijainnin ja liikkuu eteenpäin
+     *
+     * @param kuljettavat
      */
     public void liiku(List<Kuljettava> kuljettavat) {
         etsiPaamaara(kuljettavat);

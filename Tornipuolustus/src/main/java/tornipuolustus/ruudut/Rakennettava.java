@@ -14,11 +14,11 @@ public class Rakennettava extends Ruutu {
     public Torni getTorni() {
         return torni;
     }
-    
+
     /**
-     * Rakentaa tornin ruutuun. 
-     * Joka tapauksessa torni sijaitsee ruudussa käytön jälkeen.
-     * 
+     * Rakentaa tornin ruutuun. Joka tapauksessa torni sijaitsee ruudussa käytön
+     * jälkeen.
+     *
      * @return tosi, mikäli UUDEN tornin rakentaminen onnistui
      */
     public boolean rakennaTorni() {
@@ -30,9 +30,9 @@ public class Rakennettava extends Ruutu {
     }
 
     /**
-     * Poistaa tornin ruudusta. 
-     * Joka tapauksessa ruudussa ei sijaitse tornia käytön jälkeen.
-     * 
+     * Poistaa tornin ruudusta. Joka tapauksessa ruudussa ei sijaitse tornia
+     * käytön jälkeen.
+     *
      * @return tosi, mikäli torni poistettiin
      */
     public boolean tuhoaTorni() {

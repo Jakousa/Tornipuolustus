@@ -11,19 +11,20 @@ public class Peli extends Timer implements ActionListener {
     private Kentta kentta;
     private Scanner lukija;
     private boolean jatkuu;
-    private boolean omaVuoro;
+    private boolean pelaajanVuoro;
     private Pelaaja pelaaja;
     private int vaikeus;
-    private int torninHinta = 200;
+    private int torninHinta;
     private Piirtoalusta piirtoalusta;
 
     public Peli(Scanner lukija) {
         super(1000, null);
         kentta = new Kentta(10);
         jatkuu = true;
-        omaVuoro = true;
+        pelaajanVuoro = true;
         this.lukija = lukija;
         pelaaja = new Pelaaja();
+        torninHinta = 200;
 
         addActionListener(this);
         setInitialDelay(500);
@@ -31,6 +32,10 @@ public class Peli extends Timer implements ActionListener {
 
     public Pelaaja getPelaaja() {
         return pelaaja;
+    }
+    
+    public boolean getPelaajanVuoro() {
+        return pelaajanVuoro;
     }
 
     public Kentta getKentta() {
@@ -42,34 +47,38 @@ public class Peli extends Timer implements ActionListener {
     }
 
     /**
-     * asetetaan vaikeustaso pelille ja kutsuu pelaajaluokkaa
+     * Asetetaan vaikeustaso pelille
      */
     public void asetaVaikeustaso() {
         System.out.println("Valitse vaikeustaso: H helppo, K keskitaso, V vaikea");
+        int haluttu;
         String vaikeustaso = lukija.nextLine();
         if (vaikeustaso.equalsIgnoreCase("V")) {
-            this.vaikeus = 3;
+            haluttu = 3;
         } else if (vaikeustaso.equalsIgnoreCase("K")) {
-            this.vaikeus = 2;
+            haluttu = 2;
         } else {
             if (!vaikeustaso.equalsIgnoreCase("H")) {
                 System.out.println("Valintaa ei tunnistettu, improvisoidaan:");
             }
             System.out.println("Valitsit helpon vaikeustason");
-            this.vaikeus = 1;
+            haluttu = 1;
         }
-
+        setVaikeustaso(haluttu);
+    }
+    
+    public void setVaikeustaso(int vaikeus) {
+        this.vaikeus = vaikeus;
         pelaaja.aloitusElama(vaikeus);
         pelaaja.aloitusRahat(vaikeus);
     }
 
     /**
-     * asettaa (pelaajan) omanvuoron arvoksi false
+     * Asettaa pelaajan vuoron arvoksi false
      */
     public void lopetaVuoro() {
-        omaVuoro = false;
+        pelaajanVuoro = false;
     }
-    
 
     /**
      * Tulostaa pelin kannalta hyödyllistä informaatiota pelaajan nähtäville.
@@ -96,11 +105,11 @@ public class Peli extends Timer implements ActionListener {
 
         while (jatkuu) {
             piirtoalusta.paivita();
-            if (!omaVuoro) {
+            if (!pelaajanVuoro) {
                 peliPaalle(kierrosnumero);
                 kierrosnumero++;
                 tilanne();
-                omaVuoro = true;
+                pelaajanVuoro = true;
             }
         }
         System.out.println("Peli päättyi");
@@ -149,32 +158,31 @@ public class Peli extends Timer implements ActionListener {
      * Pelin toiminta, kun pelaaja on lopettanut vuoronsa
      */
     private void peliPaalle(int kierrosnumero) {
-        omaVuoro = true;
+        pelaajanVuoro = true;
         for (int i = 0; i < kierrosnumero * 6; i++) {
             if (i % 3 == 0 && i < 15 + kierrosnumero * 6) {
-                kentta.lisaaHirvio(4 * kierrosnumero * this.vaikeus);
+                kentta.lisaaHirvio(3 * kierrosnumero * this.vaikeus);
             }
 
             kentta.liikutaHirvioita();
 
             piirtoalusta.paivita();
-            kentta.piirra();
             int osumista = kentta.tornitAmpuvat();
             pelaaja.tienaa(osumista);
 
             if (kentta.paasikoLapi()) {
                 pelaaja.otaOsumaa();
             }
+            if (pelaaja.getElama() <= 0) {
+                jatkuu = false;
+                break;
+            }
+
             System.out.println("");
             System.out.println("elamasi: " + pelaaja.getElama() + " pisteesi: " + pelaaja.getPisteet());
             try {
                 Thread.sleep(400);
             } catch (Exception e) {
-            }
-
-            if (pelaaja.getElama() <= 0) {
-                jatkuu = false;
-                break;
             }
         }
     }

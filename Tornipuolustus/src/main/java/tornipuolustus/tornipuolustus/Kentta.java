@@ -195,34 +195,34 @@ public class Kentta {
         }
     }
 
-    /**
-     * Tekstikäyttöliittymään sopiva tapa piirtää ruudukko ja siinä olevat
-     * hirviöt oman elämänsä mukaan
-     */
-    public void piirra() {
-        List<Ruutu> ruudukko = new ArrayList<>();
-
-        ruudukko.addAll(kuljettavat);
-        ruudukko.addAll(rakennettavat);
-        Collections.sort(ruudukko);
-        for (Ruutu ruutu : ruudukko) {
-            int morko = 0;
-            for (Hirvio hirvio : hirviot) {
-                if (ruutu.getSijainti().equals(hirvio.getSijainti())) {
-                    morko = hirvio.getElama();
-                }
-            }
-            if (ruutu.getClass() == kuljettavat.get(0).getClass() && ruutu.getSijainti().getX() == koko - 1) {
-                System.out.print("P");
-            } else if (morko != 0) {
-                System.out.print(morko);
-            } else {
-                System.out.print(ruutu.toString());
-            }
-
-            if (ruutu.getSijainti().getX() == this.koko - 1) {
-                System.out.println("");
-            }
-        }
-    }
+//    /**
+//     * Tekstikäyttöliittymään sopiva tapa piirtää ruudukko ja siinä olevat
+//     * hirviöt oman elämänsä mukaan
+//     */
+//    public void piirra() {
+//        List<Ruutu> ruudukko = new ArrayList<>();
+//
+//        ruudukko.addAll(kuljettavat);
+//        ruudukko.addAll(rakennettavat);
+//        Collections.sort(ruudukko);
+//        for (Ruutu ruutu : ruudukko) {
+//            int morko = 0;
+//            for (Hirvio hirvio : hirviot) {
+//                if (ruutu.getSijainti().equals(hirvio.getSijainti())) {
+//                    morko = hirvio.getElama();
+//                }
+//            }
+//            if (ruutu.getClass() == kuljettavat.get(0).getClass() && ruutu.getSijainti().getX() == koko - 1) {
+//                System.out.print("P");
+//            } else if (morko != 0) {
+//                System.out.print(morko);
+//            } else {
+//                System.out.print(ruutu.toString());
+//            }
+//
+//            if (ruutu.getSijainti().getX() == this.koko - 1) {
+//                System.out.println("");
+//            }
+//        }
+//    }
 }

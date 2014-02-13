@@ -25,6 +25,14 @@ public class SijaintiTest {
         assertEquals(rakennettava.getSijainti().getX(), 1);
         assertEquals(rakennettava.getSijainti().getY(), 8);
     }
+    
+    @Test
+    public void settereitaSijainnille() {
+        rakennettava.getSijainti().setX(0);
+        rakennettava.getSijainti().setY(0);
+        assertEquals(rakennettava.getSijainti().getX(), 0);
+        assertEquals(rakennettava.getSijainti().getY(), 0);
+    }
 
     @Test
     public void kuljettavanSijaintiOikein() {

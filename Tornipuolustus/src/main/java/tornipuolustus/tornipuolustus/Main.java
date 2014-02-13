@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         Peli tornipuolustus = new Peli(new Scanner(System.in));
-        
+
         Kayttoliittyma kali = new Kayttoliittyma(tornipuolustus);
         SwingUtilities.invokeLater(kali);
 
