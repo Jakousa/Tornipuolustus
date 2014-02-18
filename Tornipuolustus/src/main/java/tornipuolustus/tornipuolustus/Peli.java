@@ -70,7 +70,7 @@ public class Peli extends Timer implements ActionListener {
     public void setVaikeustaso(int vaikeus) {
         this.vaikeus = vaikeus;
         pelaaja.aloitusElama(vaikeus);
-        pelaaja.aloitusRahat(2); //???
+        pelaaja.aloitusRahat(vaikeus); //???
     }
 
     /**
