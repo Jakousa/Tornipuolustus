@@ -60,11 +60,11 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase time="0" classname="tornipuolustus.tornipuolustus.PelaajaTest" name="pelaajaOstaa"/>
-  <testcase time="0" classname="tornipuolustus.tornipuolustus.PelaajaTest" name="testaillaanVaikeustasonVaikutusta"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.PelaajaTest" name="pelajaaAloittaaNollista"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.PelaajaTest" name="pelaajanElamaVahenee"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.PelaajaTest" name="pelaajallePakotetaanPisteet"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.PelaajaTest" name="pelaajaSaaRahaa"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.PelaajaTest" name="pelaajaBuyback"/>
+  <testcase time="0" classname="tornipuolustus.tornipuolustus.PelaajaTest" name="pelaajaOstaa"/>
+  <testcase time="0.001" classname="tornipuolustus.tornipuolustus.PelaajaTest" name="testaillaanVaikeustasonVaikutusta"/>
 </testsuite>

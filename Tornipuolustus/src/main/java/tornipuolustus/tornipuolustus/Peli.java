@@ -33,7 +33,7 @@ public class Peli extends Timer implements ActionListener {
     public Pelaaja getPelaaja() {
         return pelaaja;
     }
-    
+
     public boolean getPelaajanVuoro() {
         return pelaajanVuoro;
     }
@@ -66,11 +66,11 @@ public class Peli extends Timer implements ActionListener {
         }
         setVaikeustaso(haluttu);
     }
-    
+
     public void setVaikeustaso(int vaikeus) {
         this.vaikeus = vaikeus;
         pelaaja.aloitusElama(vaikeus);
-        pelaaja.aloitusRahat(vaikeus);
+        pelaaja.aloitusRahat(2); //???
     }
 
     /**
@@ -161,14 +161,16 @@ public class Peli extends Timer implements ActionListener {
         pelaajanVuoro = true;
         for (int i = 0; i < kierrosnumero * 6; i++) {
             if (i % 3 == 0 && i < 15 + kierrosnumero * 6) {
-                kentta.lisaaHirvio(3 * kierrosnumero * this.vaikeus);
+                kentta.lisaaHirvio(4 * (kierrosnumero));
             }
 
             kentta.liikutaHirvioita();
 
             piirtoalusta.paivita();
             int osumista = kentta.tornitAmpuvat();
-            pelaaja.tienaa(osumista);
+            if (pelaaja.getRahat() < 500) {
+                pelaaja.tienaa(osumista);
+            }
 
             if (kentta.paasikoLapi()) {
                 pelaaja.otaOsumaa();

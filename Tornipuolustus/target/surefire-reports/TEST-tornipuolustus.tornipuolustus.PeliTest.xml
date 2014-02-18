@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.008" errors="0" skipped="0" tests="7" name="tornipuolustus.tornipuolustus.PeliTest">
+<testsuite failures="0" time="0.006" errors="0" skipped="0" tests="7" name="tornipuolustus.tornipuolustus.PeliTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.7.0_25\jre\bin"/>
@@ -60,11 +60,11 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase time="0" classname="tornipuolustus.tornipuolustus.PeliTest" name="vuoronLopettaminenLopettaaVuoron"/>
-  <testcase time="0.001" classname="tornipuolustus.tornipuolustus.PeliTest" name="torniaRakennetaanPelaajallaEiRahaa"/>
-  <testcase time="0" classname="tornipuolustus.tornipuolustus.PeliTest" name="torniaRakennetaanPelaajallaRahaa"/>
-  <testcase time="0" classname="tornipuolustus.tornipuolustus.PeliTest" name="torniTuhotaan"/>
+  <testcase time="0.002" classname="tornipuolustus.tornipuolustus.PeliTest" name="torniTuhotaan"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.PeliTest" name="peliLuokentanjaPelaajan"/>
   <testcase time="0" classname="tornipuolustus.tornipuolustus.PeliTest" name="pelaajanVuoroAluksi"/>
-  <testcase time="0.001" classname="tornipuolustus.tornipuolustus.PeliTest" name="asettaaVaikeustason"/>
+  <testcase time="0" classname="tornipuolustus.tornipuolustus.PeliTest" name="asettaaVaikeustason"/>
+  <testcase time="0" classname="tornipuolustus.tornipuolustus.PeliTest" name="vuoronLopettaminenLopettaaVuoron"/>
+  <testcase time="0" classname="tornipuolustus.tornipuolustus.PeliTest" name="torniaRakennetaanPelaajallaEiRahaa"/>
+  <testcase time="0" classname="tornipuolustus.tornipuolustus.PeliTest" name="torniaRakennetaanPelaajallaRahaa"/>
 </testsuite>
