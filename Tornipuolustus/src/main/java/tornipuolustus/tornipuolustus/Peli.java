@@ -6,6 +6,10 @@ import java.util.Scanner;
 import javax.swing.Timer;
 import tornipuolustus.ui.Piirtoalusta;
 
+/**
+ * Peli luokka ohjaa pelin kulkua
+ *
+ */
 public class Peli extends Timer implements ActionListener {
 
     private Kentta kentta;
@@ -21,10 +25,11 @@ public class Peli extends Timer implements ActionListener {
         super(1000, null);
         kentta = new Kentta(10);
         jatkuu = true;
+        pelaaja = new Pelaaja();
         pelaajanVuoro = true;
         this.lukija = lukija;
-        pelaaja = new Pelaaja();
         torninHinta = 200;
+
 
         addActionListener(this);
         setInitialDelay(500);
@@ -50,27 +55,9 @@ public class Peli extends Timer implements ActionListener {
      * Asetetaan vaikeustaso pelille
      */
     public void asetaVaikeustaso() {
-        System.out.println("Valitse vaikeustaso: H helppo, K keskitaso, V vaikea");
-        int haluttu;
-        String vaikeustaso = lukija.nextLine();
-        if (vaikeustaso.equalsIgnoreCase("V")) {
-            haluttu = 3;
-        } else if (vaikeustaso.equalsIgnoreCase("K")) {
-            haluttu = 2;
-        } else {
-            if (!vaikeustaso.equalsIgnoreCase("H")) {
-                System.out.println("Valintaa ei tunnistettu, improvisoidaan:");
-            }
-            System.out.println("Valitsit helpon vaikeustason");
-            haluttu = 1;
-        }
-        setVaikeustaso(haluttu);
-    }
-
-    public void setVaikeustaso(int vaikeus) {
-        this.vaikeus = vaikeus;
+        this.vaikeus = 2;
         pelaaja.aloitusElama(vaikeus);
-        pelaaja.aloitusRahat(vaikeus); //???
+        pelaaja.aloitusRahat(vaikeus);
     }
 
     /**
@@ -83,9 +70,20 @@ public class Peli extends Timer implements ActionListener {
     /**
      * Tulostaa pelin kannalta hyödyllistä informaatiota pelaajan nähtäville.
      */
-    public void tilanne() {
-        System.out.println("Rakennushinta: " + this.torninHinta + "     Rahasi: " + pelaaja.getRahat());
-        System.out.println("Lisää torni: Z / Jyrää torni: X / Aloita: ENTER");
+    public String tilanne() {
+        if (jatkuu) {
+        return "Pisteet: " + this.pelaaja.getPisteet() + " Rahasi: " + pelaaja.getRahat() + " Elämäsi: " + this.pelaaja.getElama();
+        } else {
+            return "Peli päättyi, loppupisteesi ovat: " + this.pelaaja.getPisteet();
+        }
+    }
+    
+    public String ohjeet1() {
+        return "Z-rakentaa / X-jyrää / ENTER-aloita";
+    }
+    
+    public String ohjeet2() {
+        return "Tornin rakennushinta " + this.torninHinta ;
     }
 
     @Override
@@ -97,8 +95,8 @@ public class Peli extends Timer implements ActionListener {
      * Pelaajan vuoro tapahtuu tässä metodissa.
      */
     public void pelaa() {
-        asetaVaikeustaso();
         this.start();
+        asetaVaikeustaso();
         kentta.tayta();
         int kierrosnumero = 1;
         tilanne();

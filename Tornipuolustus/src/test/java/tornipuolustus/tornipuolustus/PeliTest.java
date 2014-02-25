@@ -29,15 +29,6 @@ public class PeliTest {
     }
 
     @Test
-    public void asettaaVaikeustason() {
-        peli.setVaikeustaso(1);
-        int helpompi = peli.getPelaaja().getRahat();
-        peli.setVaikeustaso(2);
-        int vaikeampi = peli.getPelaaja().getRahat();
-        assertTrue(helpompi > vaikeampi);
-    }
-
-    @Test
     public void vuoronLopettaminenLopettaaVuoron() { //...
         peli.lopetaVuoro();
         assertTrue(!peli.getPelaajanVuoro());
@@ -53,7 +44,6 @@ public class PeliTest {
     
     @Test
     public void torniaRakennetaanPelaajallaRahaa() {
-        peli.setVaikeustaso(3);
         peli.getKentta().tayta();
         peli.tornia(0, 0);
         Torni t = peli.getKentta().getRakennettavat().get(0).getTorni();
@@ -62,7 +52,6 @@ public class PeliTest {
 
     @Test
     public void torniTuhotaan() {
-        peli.setVaikeustaso(2);
         peli.getKentta().tayta();
         peli.tornia(0, 0);
         peli.jyraa(0, 0);

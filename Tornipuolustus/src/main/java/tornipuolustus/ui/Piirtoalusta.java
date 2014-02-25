@@ -48,6 +48,8 @@ public class Piirtoalusta extends JPanel  {
         g.fill3DRect(tornipuolustus.getPelaaja().getKursori().getX()*palanleveys, 
                 tornipuolustus.getPelaaja().getKursori().getY()*palanleveys, 
                 palanleveys, palanleveys, true);
+        g.setColor(Color.BLACK);
+        g.drawString(tornipuolustus.tilanne(), 0, 10*palanleveys + 30);
     }
 
     public void paivita() {

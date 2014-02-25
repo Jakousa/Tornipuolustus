@@ -2,19 +2,23 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package tornipuolustus.ui;
 
+import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 import tornipuolustus.tornipuolustus.Peli;
 
-
 public class Kayttoliittyma implements Runnable {
 
-    
     private JFrame frame;
     private Peli tornipuolustus;
     private int sivunPituus;
@@ -28,8 +32,8 @@ public class Kayttoliittyma implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("Tornipuolustus");
-        int leveys = 30 * sivunPituus + 10;
-        int korkeus = 30 * sivunPituus + 10;
+        int leveys = 32 * sivunPituus + 10;
+        int korkeus = 32 * sivunPituus + 10;
 
         frame.setPreferredSize(new Dimension(leveys, korkeus));
 
@@ -42,15 +46,26 @@ public class Kayttoliittyma implements Runnable {
     }
 
     public void luoKomponentit(Container container) {
+        BoxLayout layout = new BoxLayout(container, BoxLayout.Y_AXIS);
+        container.setLayout(layout);
+
         alusta = new Piirtoalusta(tornipuolustus, sivunPituus);
         container.add(alusta);
         frame.addKeyListener(new Nappaimistonkuuntelija(tornipuolustus.getPelaaja(), tornipuolustus));
+
+        
+        JLabel tilanne1;
+        JLabel tilanne2;
+        tilanne1 = new JLabel(tornipuolustus.ohjeet1());
+        tilanne2 = new JLabel(tornipuolustus.ohjeet2());
+        container.add(tilanne1);
+        container.add(tilanne2);
     }
 
     public JFrame getFrame() {
         return frame;
     }
-    
+
     public Piirtoalusta getAlusta() {
         return alusta;
     }
