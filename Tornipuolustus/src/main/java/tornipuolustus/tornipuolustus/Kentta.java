@@ -24,6 +24,10 @@ public class Kentta {
         this.hirviot = new ArrayList<Hirvio>();
         this.koko = koko;
     }
+    
+    public int getKoko() {
+        return koko;
+    }
 
     /**
      * Lisää hetkelliseen ruudukkoon kaikki ruudut

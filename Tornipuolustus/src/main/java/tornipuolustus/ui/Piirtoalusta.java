@@ -38,6 +38,11 @@ public class Piirtoalusta extends JPanel  {
         }
         g.setColor(Color.white);
         for (Kuljettava k : tornipuolustus.getKentta().getKuljettavat()) {
+            if (k.getSijainti().getX() == 0 || k.getSijainti().getX() == tornipuolustus.getKentta().getKoko()-1) {
+                g.setColor(Color.magenta);
+            } else {
+                g.setColor(Color.white);
+            }
             g.fill3DRect(k.getSijainti().getX()*palanleveys, k.getSijainti().getY()*palanleveys, palanleveys, palanleveys, false);;
         }
         g.setColor(Color.red);

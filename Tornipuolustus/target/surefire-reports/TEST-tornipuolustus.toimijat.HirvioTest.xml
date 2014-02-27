@@ -60,7 +60,6 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase time="0" classname="tornipuolustus.toimijat.HirvioTest" name="hirvioEiKohdallaJatkaaLiiketta"/>
   <testcase time="0" classname="tornipuolustus.toimijat.HirvioTest" name="hirvionElamat"/>
   <testcase time="0" classname="tornipuolustus.toimijat.HirvioTest" name="hirvionElamat2"/>
   <testcase time="0" classname="tornipuolustus.toimijat.HirvioTest" name="hirvioLoytaaSuunnan"/>
@@ -68,4 +67,5 @@
   <testcase time="0" classname="tornipuolustus.toimijat.HirvioTest" name="hirviolleAnnetaanSuunta"/>
   <testcase time="0" classname="tornipuolustus.toimijat.HirvioTest" name="hirvioLoytaaSuunnan2"/>
   <testcase time="0" classname="tornipuolustus.toimijat.HirvioTest" name="hirvioLiikkuuOikein"/>
+  <testcase time="0" classname="tornipuolustus.toimijat.HirvioTest" name="hirvioEiKohdallaJatkaaLiiketta"/>
 </testsuite>

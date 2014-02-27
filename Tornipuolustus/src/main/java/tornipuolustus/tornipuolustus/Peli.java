@@ -174,8 +174,9 @@ public class Peli extends Timer implements ActionListener {
             }
 
             kentta.liikutaHirvioita();
-
+            
             piirtoalusta.paivita();
+
             int osumista = kentta.tornitAmpuvat();
             if (pelaaja.getRahat() < 500) {
                 pelaaja.tienaa(osumista);
