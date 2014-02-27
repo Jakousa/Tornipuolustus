@@ -12,3 +12,4 @@
 11.2.2014 	6h 	Pelaaja, jotakin luokkia editoitiin pelillisten ominaisuuksien vuoksi. JavaDoc(?) ja kauan harkitun graafisen käyttöliittymän aloitus, sekvenssikaavioita myös viimeviikolta.
 13.2.2014 	5h 	JavaDocin luominen epäonnistuu jatkuvista yrityksistä huolimatta. Testejä. Rivikattavuus ~90%. mutaatiot samaa luokkaa lukuunottamatta muutamaa Peli-luokan piirtokomentoa jotka korvataan graafisen käyttöliittymän versioilla.
 25.2.2014	2h	Käyttöliittymän säätöä.
+27.2.2014 	2h 	'viimeistä' palautusta varten
