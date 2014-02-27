@@ -110,18 +110,16 @@ public class Peli extends Timer implements ActionListener {
         asetaVaikeustaso();
         kentta.tayta();
         int kierrosnumero = 1;
-        tilanne();
 
         while (jatkuu) {
             piirtoalusta.paivita();
             if (!pelaajanVuoro) {
                 peliPaalle(kierrosnumero);
                 kierrosnumero++;
-                tilanne();
                 pelaajanVuoro = true;
             }
         }
-        System.out.println("Peli päättyi");
+//        System.out.println("Peli päättyi");
     }
 
     /**
@@ -140,10 +138,11 @@ public class Peli extends Timer implements ActionListener {
         }
         if (onnistui) {
             pelaaja.rakenna(this.torninHinta);
-            System.out.println("Rakennus onnistui");
-        } else {
-            System.out.println("Rakennus epäonnistui");
-        }
+//            System.out.println("Rakennus onnistui");
+        } 
+//        else {
+//            System.out.println("Rakennus epäonnistui");
+//        }
         tilanne();
     }
 
@@ -157,9 +156,10 @@ public class Peli extends Timer implements ActionListener {
         if (kentta.poistaTorni(x, y)) {
             System.out.println("Purku onnistui");
             pelaaja.tuhoaTorni(this.torninHinta);
-        } else {
-            System.out.println("Purku epäonnistui");
-        }
+        } 
+        //else {
+//            System.out.println("Purku epäonnistui");
+//        }
         tilanne();
     }
 
@@ -190,8 +190,8 @@ public class Peli extends Timer implements ActionListener {
                 break;
             }
 
-            System.out.println("");
-            System.out.println("elamasi: " + pelaaja.getElama() + " pisteesi: " + pelaaja.getPisteet());
+//            System.out.println("");
+//            System.out.println("elamasi: " + pelaaja.getElama() + " pisteesi: " + pelaaja.getPisteet());
             try {
                 Thread.sleep(400);
             } catch (Exception e) {

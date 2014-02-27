@@ -60,9 +60,9 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
+  <testcase time="0" classname="tornipuolustus.ruudut.RakennettavaTest" name="torniaTorniinTaiTuhottuaTuhotaan"/>
   <testcase time="0" classname="tornipuolustus.ruudut.RakennettavaTest" name="torniTuhotaan"/>
   <testcase time="0" classname="tornipuolustus.ruudut.RakennettavaTest" name="torniLisataan2"/>
   <testcase time="0" classname="tornipuolustus.ruudut.RakennettavaTest" name="torniLisataan"/>
   <testcase time="0" classname="tornipuolustus.ruudut.RakennettavaTest" name="kentanLuonnistaTyhjaRuudukko"/>
-  <testcase time="0" classname="tornipuolustus.ruudut.RakennettavaTest" name="torniaTorniinTaiTuhottuaTuhotaan"/>
 </testsuite>
