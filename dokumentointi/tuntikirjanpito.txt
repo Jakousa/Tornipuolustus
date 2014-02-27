@@ -7,7 +7,8 @@
 2.2.2014 	1h 	Testejä
 5.2.2014 	2h 	Testejä
 6.2.2014 	3h 	Testejä (palautus) - Logiikka valmis?
-7.2.2014 	2h 	Testejä; coberturan (rivikattavuus) osalta ~90% valmiit lukuunottamatta käyttöliittymää. pitin mukaan 			mutaatiokattavuus ~80%
+7.2.2014 	2h 	Testejä; coberturan (rivikattavuus) osalta ~90% valmiit lukuunottamatta käyttöliittymää. pitin mukaan mutaatiokattavuus ~80%
 8.2.2014 	1h 	Testien järjestelyä.
-11.2.2014 	6h 	Pelaaja, jotakin luokkia editoitiin pelillisten ominaisuuksien vuoksi. JavaDoc(?) ja kauan harkitun graafisen 			käyttöliittymän aloitus, sekvenssikaavioita myös viimeviikolta.
-13.2.2014 	5h 	JavaDocin luominen epäonnistuu jatkuvista yrityksistä huolimatta. Testejä. Rivikattavuus ~90%. mutaatiot samaa 			luokkaa lukuunottamatta muutamaa Peli-luokan piirtokomentoa jotka korvataan graafisen käyttöliittymän versioilla.
+11.2.2014 	6h 	Pelaaja, jotakin luokkia editoitiin pelillisten ominaisuuksien vuoksi. JavaDoc(?) ja kauan harkitun graafisen käyttöliittymän aloitus, sekvenssikaavioita myös viimeviikolta.
+13.2.2014 	5h 	JavaDocin luominen epäonnistuu jatkuvista yrityksistä huolimatta. Testejä. Rivikattavuus ~90%. mutaatiot samaa luokkaa lukuunottamatta muutamaa Peli-luokan piirtokomentoa jotka korvataan graafisen käyttöliittymän versioilla.
+25.2.2014	2h	Käyttöliittymän säätöä.

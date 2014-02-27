@@ -3,3 +3,11 @@ Käyttäjien toiminnot:
 Laitetaan torneja pelikentälle, poistetaan torneja, annetaan vihollisille lupa hyökätä.
 
 Tavoitteena, että viholliset eivät ylitä pelikenttää rakentamalla torneja jotka vähentävät niiden elämäpisteitä.
+
+Rakennekuvaus:
+
+Tornipuolustus koostuu kahden tyyppisistä toimijoista, Hirviöistä ja Torneista, niiden toimintaan vaikuttavista ruuduista, Rakennettavista ja Kuljettavista. 
+Jokaista rakennettavaa ruutua kohden voi olla yksi torni, jossa torni sijaitsee ja tarkastelee ympäröivää ruudukkoa.
+Ruutu on abstrakti luokka jonka perii Rakennettava ja Kuljettava. Ruudulla on oma sijainti ja se tallennetaan Kenttä luokan sisälle. Toisen tyyppinen ruutu on kuljettava, näitä ruutuja luokka Hirviö käyttää.
+Hirviö kuuluu myös luokkaan Kenttä, sillä on oma sijaintinsa ja se liikkuu kentän käskiessä sitä valitsemaan annetuista kuljettavista ruuduista seuraava suunta.
+Peli luokka pitää sisällään pelin pelattavuuden kannalta mielenkiintoiset ja on näin yhteydessä sekä Kenttään että Pelaajaan. Pelaaja luokalla on oma kursori jolla se vaikuttaa ja näin ollen Pelaajalla on myös oma Sijaintinsa.

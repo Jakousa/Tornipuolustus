@@ -1,0 +1,10 @@
+Estä hirviöitä pääsemästä sokkelon läpi kimppuusi rakentamalla torneja!
+
+Vihreä on kursorisi jota ohjataan nuolinäppäimin.
+
+Paina Z rakentaaksesi tornin kursorin osoittamaan paikkaan.
+Paina X purkaaksesi tornin kursorin osoittamasta paikasta.
+
+Kun olet valmis paina ENTER kutsuaksesi hirviöt kentälle.
+
+Muista kiinnittää huomiota tornin hintaan sekä omistamiisi rahoihisi.

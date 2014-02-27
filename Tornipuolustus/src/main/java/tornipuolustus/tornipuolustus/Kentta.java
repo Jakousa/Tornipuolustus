@@ -6,6 +6,11 @@ import java.util.List;
 import tornipuolustus.ruudut.*;
 import tornipuolustus.toimijat.Hirvio;
 
+/**
+ * Luokka tallentaa itseensä hirviöt ja erityyppiset ruudut joita
+ * pelissä käytetään
+ */
+
 public class Kentta {
 
     private List<Kuljettava> kuljettavat;
@@ -144,8 +149,7 @@ public class Kentta {
     }
 
     /**
-     * Kentän täyttö. Koon täytyy vastata annettua kokoa. Kenttä täytynee olla
-     * muotoiltu niin, että hirviö pääsee läpi. Muuten peli olisi hieman tylsä.
+     * Kentän täyttö. Koon täytyy vastata annettua kokoa. 
      */
     public void tayta() {
 //        for (int i = 0; i < this.koko; i++) {
@@ -194,35 +198,4 @@ public class Kentta {
             }
         }
     }
-
-//    /**
-//     * Tekstikäyttöliittymään sopiva tapa piirtää ruudukko ja siinä olevat
-//     * hirviöt oman elämänsä mukaan
-//     */
-//    public void piirra() {
-//        List<Ruutu> ruudukko = new ArrayList<>();
-//
-//        ruudukko.addAll(kuljettavat);
-//        ruudukko.addAll(rakennettavat);
-//        Collections.sort(ruudukko);
-//        for (Ruutu ruutu : ruudukko) {
-//            int morko = 0;
-//            for (Hirvio hirvio : hirviot) {
-//                if (ruutu.getSijainti().equals(hirvio.getSijainti())) {
-//                    morko = hirvio.getElama();
-//                }
-//            }
-//            if (ruutu.getClass() == kuljettavat.get(0).getClass() && ruutu.getSijainti().getX() == koko - 1) {
-//                System.out.print("P");
-//            } else if (morko != 0) {
-//                System.out.print(morko);
-//            } else {
-//                System.out.print(ruutu.toString());
-//            }
-//
-//            if (ruutu.getSijainti().getX() == this.koko - 1) {
-//                System.out.println("");
-//            }
-//        }
-//    }
 }

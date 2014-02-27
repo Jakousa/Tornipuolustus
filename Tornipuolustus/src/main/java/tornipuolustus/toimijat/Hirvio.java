@@ -5,6 +5,10 @@ import java.util.List;
 import tornipuolustus.ruudut.Kuljettava;
 import tornipuolustus.tornipuolustus.Sijainti;
 
+/**
+ * Hirviö pyrkii pääsemään Ruutu sokkelon läpi
+ * 
+ */
 public class Hirvio {
 
     private int suunta;

@@ -41,14 +41,6 @@ public class PeliTest {
         Torni t = peli.getKentta().getRakennettavat().get(0).getTorni();
         assertTrue(t == null);
     }
-    
-    @Test
-    public void torniaRakennetaanPelaajallaRahaa() {
-        peli.getKentta().tayta();
-        peli.tornia(0, 0);
-        Torni t = peli.getKentta().getRakennettavat().get(0).getTorni();
-        assertTrue(t != null);
-    }
 
     @Test
     public void torniTuhotaan() {

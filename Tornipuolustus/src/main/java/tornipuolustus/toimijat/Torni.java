@@ -1,12 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package tornipuolustus.toimijat;
 
 import java.util.List;
 import tornipuolustus.tornipuolustus.Sijainti;
 
+/**
+ * Torni muistaa kohteen eli hirviön johon haluaa vaikuttaa, sillä on voima joka
+ * muuttaa kuinka paljon kohteen elämiä vähennetään.
+ * 
+ */
 public class Torni {
 
     private Hirvio kohde;
@@ -18,7 +19,7 @@ public class Torni {
 
     /**
      * Vähentää kohteen (Hirviön) elämää.
-     * Kentän vastuulla poistaa kuolleet.
+     * 
      */
     public boolean ammu() {
         if (kohde != null) {

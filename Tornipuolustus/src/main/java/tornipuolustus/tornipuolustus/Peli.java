@@ -52,7 +52,8 @@ public class Peli extends Timer implements ActionListener {
     }
 
     /**
-     * Asetetaan vaikeustaso pelille
+     * Asetetaan vaikeustaso pelille Tähän voidaan heittää numeroita jotta
+     * selvitetään milloin peli on sopivan vaikea.
      */
     public void asetaVaikeustaso() {
         this.vaikeus = 2;
@@ -72,18 +73,28 @@ public class Peli extends Timer implements ActionListener {
      */
     public String tilanne() {
         if (jatkuu) {
-        return "Pisteet: " + this.pelaaja.getPisteet() + " Rahasi: " + pelaaja.getRahat() + " Elämäsi: " + this.pelaaja.getElama();
+            return "Pisteet: " + this.pelaaja.getPisteet() + " Rahasi: " + pelaaja.getRahat() + " Elämäsi: " + this.pelaaja.getElama();
         } else {
             return "Peli päättyi, loppupisteesi ovat: " + this.pelaaja.getPisteet();
         }
     }
-    
+
+    /**
+     * Ohjeet kahdessa osassa kun kahdelle riville kirjoittaminen epäonnistui
+     *
+     * @return palauttaa ohjeita joita käyttöliittymä piirtelee
+     */
     public String ohjeet1() {
         return "Z-rakentaa / X-jyrää / ENTER-aloita";
     }
-    
+
+    /**
+     * Ohjeet kahdessa osassa kun kahdelle riville kirjoittaminen epäonnistui
+     * 
+     * @return palauttaa ohjeita joita käyttöliittymä piirtelee
+     */
     public String ohjeet2() {
-        return "Tornin rakennushinta " + this.torninHinta ;
+        return "Tornin rakennushinta " + this.torninHinta;
     }
 
     @Override

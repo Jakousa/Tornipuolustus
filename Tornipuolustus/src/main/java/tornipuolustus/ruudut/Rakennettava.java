@@ -2,6 +2,11 @@ package tornipuolustus.ruudut;
 
 import tornipuolustus.toimijat.Torni;
 
+/**
+ * Rakennettava voi sisältää tornin, pelikenttä koostuu rakennettavista ja
+ * kuljettavista ruuduista
+ * 
+ */
 public class Rakennettava extends Ruutu {
 
     private Torni torni;
@@ -19,7 +24,7 @@ public class Rakennettava extends Ruutu {
      * Rakentaa tornin ruutuun. Joka tapauksessa torni sijaitsee ruudussa käytön
      * jälkeen.
      *
-     * @return tosi, mikäli UUDEN tornin rakentaminen onnistui
+     * @return true, mikäli UUDEN tornin rakentaminen onnistui. 
      */
     public boolean rakennaTorni() {
         if (torni == null) {

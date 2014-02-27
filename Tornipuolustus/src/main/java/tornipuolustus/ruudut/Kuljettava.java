@@ -1,9 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package tornipuolustus.ruudut;
 
+/**
+ * Kuljettavat ovat ruutuja joita pitkin hirviöt kykynevät liikkumaan
+ * 
+ * 
+ */
 public class Kuljettava extends Ruutu {
     
     public Kuljettava(int x, int y) {
